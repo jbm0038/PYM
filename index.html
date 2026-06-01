@@ -7,141 +7,173 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --black: #0a0a0a;
-  --deep: #111111;
-  --card: #181818;
-  --border: #2e2e2e;
-  --gold: #c9a84c;
-  --gold-light: #e8c96a;
-  --gold-dim: rgba(201,168,76,0.14);
-  --white: #f5f0e8;
-  --muted: #888078;
-  --text: #cdc8c0;
-  --green: #6bcf8f;
-  --red: #e07878;
-  --blue: #7ab4e0;
+  --black:#0a0a0a;--deep:#111111;--card:#181818;--border:#2e2e2e;
+  --gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,0.13);
+  --white:#f5f0e8;--muted:#888078;--text:#cdc8c0;
+  --green:#6bcf8f;--red:#e07878;--blue:#7ab4e0;--purple:#b07ae0;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.5;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:var(--gold);}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--gold);}
 
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 7vw;gap:5rem;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-15%;right:-8%;width:55vw;height:55vw;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.055) 0%,transparent 70%);pointer-events:none;}
-
-.eyebrow{font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;display:flex;align-items:center;gap:.8rem;opacity:0;animation:fadeUp .8s .2s ease forwards;}
+.eyebrow{font-size:.82rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;display:flex;align-items:center;gap:.8rem;opacity:0;animation:fadeUp .8s .2s ease forwards;}
 .eyebrow::before{content:'';width:32px;height:1px;background:var(--gold);}
-
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.8rem,5.5vw,5.8rem);font-weight:300;line-height:1.04;color:var(--white);margin-bottom:1.6rem;opacity:0;animation:fadeUp .8s .35s ease forwards;}
 .hero-title em{font-style:italic;color:var(--gold);}
-
-.hero-desc{font-size:1.05rem;line-height:1.8;color:var(--muted);max-width:440px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .5s ease forwards;}
-
+.hero-desc{font-size:1.08rem;line-height:1.8;color:var(--muted);max-width:440px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .5s ease forwards;}
 .hero-badges{display:flex;gap:.75rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .65s ease forwards;}
-.badge{padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:100px;font-size:.8rem;font-weight:400;color:var(--muted);letter-spacing:.03em;transition:all .3s;}
+.badge{padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:100px;font-size:.82rem;font-weight:400;color:var(--muted);letter-spacing:.03em;transition:all .3s;}
 .badge:hover{border-color:var(--gold);color:var(--gold);}
-
 .screen-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.8rem;opacity:0;animation:fadeUp .8s .8s ease forwards;}
-.tab-btn{padding:.5rem 1.15rem;background:transparent;border:1px solid var(--border);border-radius:100px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:400;cursor:pointer;transition:all .25s;letter-spacing:.02em;}
+.tab-btn{padding:.5rem 1.15rem;background:transparent;border:1px solid var(--border);border-radius:100px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:400;cursor:pointer;transition:all .25s;letter-spacing:.02em;}
 .tab-btn:hover{border-color:rgba(201,168,76,.4);color:var(--text);}
 .tab-btn.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
 
-/* ── PHONE ── */
+/* ── HERO PHONE ── */
 .hero-phone{display:flex;justify-content:center;align-items:center;opacity:0;animation:fadeIn 1s .5s ease forwards;}
 .phone-wrap{position:relative;width:290px;}
-.phone{width:290px;height:600px;background:var(--deep);border-radius:42px;border:1.5px solid var(--border);box-shadow:0 0 0 6px var(--card),0 0 0 7.5px var(--border),0 60px 120px rgba(0,0,0,.85),0 0 100px rgba(201,168,76,.07);overflow:hidden;position:relative;animation:pulseGold 4s ease-in-out infinite;}
+.phone{width:290px;height:600px;background:var(--deep);border-radius:42px;border:1.5px solid var(--border);box-shadow:0 0 0 6px var(--card),0 0 0 7.5px var(--border),0 60px 120px rgba(0,0,0,.85),0 0 60px rgba(201,168,76,.07);overflow:hidden;position:relative;animation:pulseGold 4s ease-in-out infinite;}
 @keyframes pulseGold{0%,100%{box-shadow:0 0 0 6px var(--card),0 0 0 7.5px var(--border),0 60px 120px rgba(0,0,0,.85),0 0 0 rgba(201,168,76,0);}50%{box-shadow:0 0 0 6px var(--card),0 0 0 7.5px var(--border),0 60px 120px rgba(0,0,0,.85),0 0 40px rgba(201,168,76,.12);}}
-
 .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:28px;background:var(--black);border-radius:0 0 18px 18px;z-index:10;}
 .phone-screen{width:100%;height:100%;position:relative;overflow:hidden;}
-
-.screen{position:absolute;inset:0;padding:44px 18px 60px;opacity:0;transition:opacity .5s ease;display:flex;flex-direction:column;gap:.45rem;overflow:hidden;}
+.screen{position:absolute;inset:0;padding:44px 18px 60px;opacity:0;transition:opacity .5s ease;display:flex;flex-direction:column;gap:.42rem;overflow:hidden;}
 .screen.active{opacity:1;}
 
-/* phone common */
-.s-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;flex-shrink:0;}
-.s-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--white);}
+/* phone shared components */
+.s-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;flex-shrink:0;}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--white);}
 .s-sub{font-size:.62rem;color:var(--muted);letter-spacing:.04em;}
-
-.pcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.7rem .75rem;position:relative;overflow:hidden;flex-shrink:0;}
-.pcard::after{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:14px 14px 0 0;}
-.plabel{font-size:.58rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.25rem;}
-.pval{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--gold);line-height:1;}
-.psub{font-size:.54rem;color:var(--muted);margin-top:.12rem;}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:.65rem .7rem;position:relative;overflow:hidden;flex-shrink:0;}
+.pcard::after{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:13px 13px 0 0;}
+.plabel{font-size:.58rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.22rem;}
+.pval{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--gold);line-height:1;}
+.psub{font-size:.53rem;color:var(--muted);margin-top:.1rem;}
 .pos{color:var(--green);}.neg{color:var(--red);}
-
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;flex-shrink:0;}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;flex-shrink:0;}
-
-.mini-chart{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.7rem .75rem;flex-shrink:0;}
-.chart-bars{display:flex;align-items:flex-end;gap:3px;height:34px;margin-top:.4rem;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.42rem;flex-shrink:0;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.38rem;flex-shrink:0;}
+.mini-chart{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:.65rem .7rem;flex-shrink:0;}
+.chart-bars{display:flex;align-items:flex-end;gap:3px;height:32px;margin-top:.38rem;}
 .cbar{flex:1;background:var(--border);border-radius:3px 3px 0 0;}
-.cbar.g{background:var(--gold);}.cbar.gd{background:rgba(201,168,76,.32);}
-
-.alert-list{display:flex;flex-direction:column;gap:.38rem;flex-shrink:0;}
-.alert-item{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.55rem .65rem;display:flex;align-items:center;gap:.5rem;}
+.cbar.g{background:var(--gold);}.cbar.gd{background:rgba(201,168,76,.3);}
+.cbar.bl{background:var(--blue);}.cbar.bld{background:rgba(122,180,224,.25);}
+.alert-list{display:flex;flex-direction:column;gap:.36rem;flex-shrink:0;}
+.alert-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.48rem;}
 .adot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-.adot.g{background:var(--gold);}.adot.r{background:var(--red);}.adot.gr{background:var(--green);}
-.atext{font-size:.62rem;color:var(--text);line-height:1.35;flex:1;}
-.atime{font-size:.54rem;color:var(--muted);white-space:nowrap;}
-
-/* chat screen */
-.chat-list{display:flex;flex-direction:column;gap:.45rem;flex:1;overflow:hidden;}
-.cmsg{max-width:84%;padding:.55rem .7rem;border-radius:13px;font-size:.62rem;line-height:1.5;}
+.adot.g{background:var(--gold);}.adot.r{background:var(--red);}.adot.gr{background:var(--green);}.adot.bl{background:var(--blue);}
+.atext{font-size:.6rem;color:var(--text);line-height:1.35;flex:1;}
+.atime{font-size:.52rem;color:var(--muted);white-space:nowrap;}
+.chat-list{display:flex;flex-direction:column;gap:.42rem;flex:1;overflow:hidden;}
+.cmsg{max-width:84%;padding:.52rem .68rem;border-radius:12px;font-size:.6rem;line-height:1.5;}
 .mai{background:var(--card);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px;color:var(--text);}
 .muser{background:var(--gold-dim);border:1px solid rgba(201,168,76,.25);align-self:flex-end;border-bottom-right-radius:4px;color:var(--white);}
-.msender{font-size:.52rem;color:var(--gold);font-weight:500;letter-spacing:.04em;margin-bottom:.2rem;}
-.chat-input{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:.5rem .8rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.chat-ph{font-size:.6rem;color:var(--muted);}
-.send-btn{width:22px;height:22px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.send-btn svg{width:10px;height:10px;fill:var(--black);}
-
-/* empleados/SS screen */
-.emp-header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.2rem;}
-.emp-row{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.55rem .65rem;display:flex;align-items:center;gap:.55rem;flex-shrink:0;}
-.emp-avatar{width:26px;height:26px;border-radius:50%;background:var(--gold-dim);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:.62rem;color:var(--gold);font-weight:500;flex-shrink:0;}
-.emp-name{font-size:.62rem;color:var(--white);font-weight:400;}
-.emp-role{font-size:.52rem;color:var(--muted);}
-.emp-status{margin-left:auto;font-size:.52rem;padding:.2rem .5rem;border-radius:100px;}
+.msender{font-size:.5rem;color:var(--gold);font-weight:500;letter-spacing:.04em;margin-bottom:.18rem;}
+.chat-input{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:.48rem .75rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.chat-ph{font-size:.58rem;color:var(--muted);}
+.send-btn{width:20px;height:20px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.send-btn svg{width:9px;height:9px;fill:var(--black);}
+.emp-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.52rem;flex-shrink:0;}
+.emp-avatar{width:25px;height:25px;border-radius:50%;background:var(--gold-dim);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:.58rem;color:var(--gold);font-weight:500;flex-shrink:0;}
+.emp-name{font-size:.6rem;color:var(--white);font-weight:400;}
+.emp-role{font-size:.5rem;color:var(--muted);}
+.emp-status{margin-left:auto;font-size:.5rem;padding:.18rem .48rem;border-radius:100px;}
 .st-ok{background:rgba(107,207,143,.12);color:var(--green);border:1px solid rgba(107,207,143,.25);}
 .st-warn{background:rgba(224,120,120,.12);color:var(--red);border:1px solid rgba(224,120,120,.25);}
 .st-pend{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,.25);}
-
-/* proveedores screen */
-.prov-row{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.55rem .65rem;display:flex;align-items:center;gap:.55rem;flex-shrink:0;}
-.prov-logo{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:600;flex-shrink:0;}
+.prov-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.prov-logo{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:600;flex-shrink:0;}
 .prov-info{flex:1;}
-.prov-name{font-size:.62rem;color:var(--white);font-weight:400;}
-.prov-detail{font-size:.52rem;color:var(--muted);}
-.prov-amount{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);}
-
-/* onboarding screen */
-.prog-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.7rem .75rem;flex-shrink:0;}
-.prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;}
-.prog-lbl{font-size:.62rem;color:var(--text);}
-.prog-pct{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);}
+.prov-name{font-size:.6rem;color:var(--white);font-weight:400;}
+.prov-detail{font-size:.5rem;color:var(--muted);}
+.prov-amount{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--gold);}
+.prog-wrap{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:.65rem .7rem;flex-shrink:0;}
+.prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.48rem;}
+.prog-lbl{font-size:.6rem;color:var(--text);}
+.prog-pct{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--gold);}
 .prog-track{height:4px;background:var(--border);border-radius:4px;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:4px;width:60%;}
-.step-row{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.55rem .65rem;display:flex;align-items:center;gap:.55rem;flex-shrink:0;}
-.step-ico{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.65rem;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:4px;}
+.step-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.52rem;flex-shrink:0;}
+.step-ico{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.62rem;}
 .s-done{background:rgba(107,207,143,.14);border:1px solid rgba(107,207,143,.28);color:var(--green);}
 .s-act{background:var(--gold-dim);border:1px solid rgba(201,168,76,.28);color:var(--gold);}
 .s-pend{background:var(--deep);border:1px solid var(--border);color:var(--muted);}
-.step-n{font-size:.62rem;color:var(--white);font-weight:400;}
-.step-d{font-size:.53rem;color:var(--muted);margin-top:.08rem;}
+.step-n{font-size:.6rem;color:var(--white);font-weight:400;}
+.step-d{font-size:.5rem;color:var(--muted);margin-top:.07rem;}
+.doc-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.doc-icon{width:26px;height:26px;border-radius:7px;background:var(--gold-dim);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0;}
+.doc-name{font-size:.6rem;color:var(--white);font-weight:400;}
+.doc-meta{font-size:.5rem;color:var(--muted);}
+.doc-badge{margin-left:auto;font-size:.48rem;padding:.18rem .45rem;border-radius:100px;white-space:nowrap;}
+.cal-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.cal-date{width:34px;text-align:center;flex-shrink:0;}
+.cal-day{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--gold);line-height:1;}
+.cal-mon{font-size:.5rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
+.cal-info{flex:1;}
+.cal-name{font-size:.6rem;color:var(--white);}
+.cal-model{font-size:.5rem;color:var(--muted);}
+.cal-status{font-size:.5rem;padding:.18rem .45rem;border-radius:100px;white-space:nowrap;}
+.ref-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.ref-ava{width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:500;flex-shrink:0;}
+.ref-name{font-size:.6rem;color:var(--white);}
+.ref-status{font-size:.5rem;color:var(--muted);}
+.ref-reward{margin-left:auto;font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--green);}
+.eco-bar{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:.65rem .7rem;flex-shrink:0;}
+.eco-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem;}
+.eco-label{font-size:.58rem;color:var(--muted);}
+.eco-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--green);}
+.eco-track{height:5px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:.45rem;}
+.eco-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--green),#a8e8c0);}
+.rep-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.rep-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0;}
+.rep-name{font-size:.6rem;color:var(--white);}
+.rep-meta{font-size:.5rem;color:var(--muted);}
+.rep-dl{margin-left:auto;font-size:.52rem;color:var(--gold);cursor:pointer;}
+.sig-doc{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:.7rem .75rem;flex-shrink:0;}
+.sig-name{font-size:.65rem;color:var(--white);margin-bottom:.2rem;}
+.sig-meta{font-size:.52rem;color:var(--muted);margin-bottom:.55rem;}
+.sig-area{border:1.5px dashed rgba(201,168,76,.35);border-radius:10px;height:38px;display:flex;align-items:center;justify-content:center;margin-bottom:.5rem;}
+.sig-hint{font-size:.55rem;color:var(--muted);}
+.sig-btn{background:var(--gold-dim);border:1px solid rgba(201,168,76,.35);border-radius:8px;padding:.35rem .7rem;font-size:.58rem;color:var(--gold);text-align:center;}
+.hora-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.5rem .62rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.hora-name{font-size:.6rem;color:var(--white);flex:1;}
+.hora-time{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--gold);}
+.hora-status{font-size:.5rem;padding:.18rem .45rem;border-radius:100px;}
+.gami-badge{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:.65rem .7rem;text-align:center;flex-shrink:0;}
+.gami-icon{font-size:1.5rem;margin-bottom:.3rem;}
+.gami-name{font-size:.65rem;color:var(--white);font-weight:500;}
+.gami-desc{font-size:.52rem;color:var(--muted);margin-top:.1rem;}
+.gami-row{display:flex;gap:.4rem;}
+.norm-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:flex-start;gap:.5rem;flex-shrink:0;}
+.norm-dot{width:7px;height:7px;border-radius:50%;margin-top:.18rem;flex-shrink:0;}
+.norm-title{font-size:.62rem;color:var(--white);font-weight:400;}
+.norm-date{font-size:.5rem;color:var(--muted);margin-top:.08rem;}
+.norm-tag{font-size:.48rem;padding:.15rem .45rem;border-radius:100px;margin-top:.15rem;display:inline-block;}
+.omni-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.52rem .62rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.omni-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.omni-name{font-size:.62rem;color:var(--white);}
+.omni-meta{font-size:.5rem;color:var(--muted);}
+.omni-status{margin-left:auto;font-size:.5rem;padding:.18rem .48rem;border-radius:100px;}
+.pred-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.55rem .65rem;flex-shrink:0;}
+.pred-label{font-size:.56rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem;}
+.pred-val{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--gold);}
+.pred-delta{font-size:.52rem;margin-top:.08rem;}
 
-/* bottom nav */
-.phone-nav{position:absolute;bottom:0;left:0;right:0;height:56px;background:rgba(17,17,17,.97);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding:0 6px 8px;z-index:5;backdrop-filter:blur(8px);}
-.nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 6px;border-radius:8px;transition:all .2s;}
-.nav-icon{font-size:.9rem;color:var(--muted);transition:color .2s;line-height:1;}
-.nav-lbl{font-size:.44rem;color:var(--muted);letter-spacing:.03em;transition:color .2s;}
+/* bottom nav hero phone */
+.phone-nav{position:absolute;bottom:0;left:0;right:0;height:56px;background:rgba(17,17,17,.97);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding:0 4px 8px;z-index:5;backdrop-filter:blur(8px);}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 5px;border-radius:8px;transition:all .2s;}
+.nav-icon{font-size:.85rem;color:var(--muted);transition:color .2s;line-height:1;}
+.nav-lbl{font-size:.4rem;color:var(--muted);letter-spacing:.02em;transition:color .2s;}
 .nav-dot{width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:0;transition:opacity .2s;}
 .nav-item.active .nav-icon,.nav-item.active .nav-lbl{color:var(--gold);}
 .nav-item.active .nav-dot{opacity:1;}
 
-/* ── DIVIDER ── */
+/* ── DIVIDERS & LAYOUT ── */
 .gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.3;}
 
 /* ── STATS ── */
@@ -149,39 +181,106 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .stat-item{padding:2.5rem 1.5rem;border-right:1px solid var(--border);text-align:center;}
 .stat-item:last-child{border-right:none;}
 .stat-number{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.4rem;}
-.stat-label{font-size:.85rem;color:var(--muted);line-height:1.55;max-width:140px;margin:0 auto;}
+.stat-label{font-size:.88rem;color:var(--muted);line-height:1.55;max-width:140px;margin:0 auto;}
 
 /* ── SECTION COMMON ── */
 .sec{padding:6rem 7vw;position:relative;}
-.sec-label{font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;}
+.sec-label{font-size:.82rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;}
 .sec-label::before{content:'';width:32px;height:1px;background:var(--gold);}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,3.8vw,3.4rem);font-weight:300;color:var(--white);max-width:520px;line-height:1.12;margin-bottom:3rem;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,3.8vw,3.4rem);font-weight:300;color:var(--white);max-width:620px;line-height:1.12;margin-bottom:3rem;}
 .sec-title em{font-style:italic;color:var(--gold);}
 
-/* ── FEATURES GRID ── */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;}
-.feat{background:var(--deep);padding:2rem 1.8rem;transition:background .3s;position:relative;overflow:hidden;}
-.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s;}
-.feat:hover{background:var(--card);}
-.feat:hover::before{opacity:1;}
-.feat-icon{font-size:1.6rem;margin-bottom:1rem;display:block;}
-.feat-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:.5rem;}
-.feat-desc{font-size:.88rem;line-height:1.7;color:var(--muted);}
+/* ══════════════════════════════════════
+   MINI PHONES GRID
+══════════════════════════════════════ */
+.mini-phones-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem 2rem;}
+
+.mini-phone-wrap{display:flex;flex-direction:column;align-items:center;gap:1.1rem;}
+
+.mini-phone{width:148px;height:302px;background:var(--deep);border-radius:22px;border:1px solid var(--border);box-shadow:0 0 0 3px var(--card),0 0 0 4px var(--border),0 20px 50px rgba(0,0,0,.7);overflow:hidden;position:relative;flex-shrink:0;transition:transform .3s,box-shadow .3s;}
+.mini-phone:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 0 0 3px var(--card),0 0 0 4px rgba(201,168,76,.5),0 30px 60px rgba(0,0,0,.7),0 0 30px rgba(201,168,76,.12);}
+.mini-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:52px;height:14px;background:var(--black);border-radius:0 0 9px 9px;z-index:5;}
+
+.mini-screen{width:100%;height:100%;padding:20px 10px 8px;display:flex;flex-direction:column;gap:.28rem;overflow:hidden;}
+
+/* mini shared */
+.ms-title{font-family:'Cormorant Garamond',serif;font-size:.82rem;font-weight:600;color:var(--white);margin-bottom:.08rem;flex-shrink:0;}
+.ms-sub{font-size:.44rem;color:var(--muted);letter-spacing:.04em;margin-bottom:.18rem;flex-shrink:0;}
+.mc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.4rem .45rem;position:relative;overflow:hidden;flex-shrink:0;}
+.mc::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+.ml{font-size:.42rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.15rem;}
+.mv{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:600;color:var(--gold);line-height:1;}
+.ms2{font-size:.38rem;color:var(--muted);margin-top:.08rem;}
+.mg2{display:grid;grid-template-columns:1fr 1fr;gap:.28rem;flex-shrink:0;}
+.mg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.24rem;flex-shrink:0;}
+.mbar{height:.5rem;background:var(--border);border-radius:3px;overflow:hidden;flex-shrink:0;}
+.mbar-fill{height:100%;border-radius:3px;}
+.mai-msg{background:var(--card);border:1px solid var(--border);border-radius:8px 8px 8px 2px;padding:.35rem .42rem;font-size:.44rem;color:var(--text);line-height:1.45;align-self:flex-start;flex-shrink:0;}
+.muser-msg{background:var(--gold-dim);border:1px solid rgba(201,168,76,.2);border-radius:8px 8px 2px 8px;padding:.35rem .42rem;font-size:.44rem;color:var(--white);line-height:1.45;align-self:flex-end;max-width:80%;flex-shrink:0;}
+.msend{font-size:.38rem;color:var(--gold);margin-bottom:.1rem;}
+.mrow{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;display:flex;align-items:center;gap:.35rem;flex-shrink:0;}
+.mava{width:18px;height:18px;border-radius:50%;background:var(--gold-dim);border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;font-size:.4rem;color:var(--gold);font-weight:500;flex-shrink:0;}
+.mrname{font-size:.46rem;color:var(--white);}
+.mrmeta{font-size:.38rem;color:var(--muted);}
+.mrbadge{margin-left:auto;font-size:.38rem;padding:.12rem .32rem;border-radius:100px;}
+.mdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.malert{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.35rem .42rem;display:flex;align-items:center;gap:.35rem;flex-shrink:0;}
+.malert-text{font-size:.44rem;color:var(--text);line-height:1.3;flex:1;}
+.mcal{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;display:flex;align-items:center;gap:.35rem;flex-shrink:0;}
+.mcal-day{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);width:20px;text-align:center;flex-shrink:0;}
+.mcal-name{font-size:.46rem;color:var(--white);}
+.mcal-meta{font-size:.38rem;color:var(--muted);}
+.mcal-s{font-size:.38rem;padding:.1rem .3rem;border-radius:100px;margin-left:auto;white-space:nowrap;}
+.mstep{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;display:flex;align-items:center;gap:.35rem;flex-shrink:0;}
+.mstep-ico{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.44rem;flex-shrink:0;}
+.mstep-n{font-size:.46rem;color:var(--white);}
+.mstep-d{font-size:.38rem;color:var(--muted);}
+.mbars-wrap{display:flex;align-items:flex-end;gap:2px;height:24px;flex-shrink:0;}
+.mbb{flex:1;border-radius:2px 2px 0 0;}
+.msig{border:1px dashed rgba(201,168,76,.3);border-radius:7px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.msig-t{font-size:.42rem;color:var(--muted);}
+.mbtn{border:1px solid var(--border);border-radius:7px;padding:.3rem .5rem;font-size:.48rem;color:var(--muted);text-align:center;flex-shrink:0;}
+.mbtn.gold{background:var(--gold-dim);border-color:rgba(201,168,76,.3);color:var(--gold);}
+.mgami{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;display:flex;align-items:center;gap:.35rem;flex-shrink:0;}
+.mgami-icon{font-size:.9rem;flex-shrink:0;}
+.mgami-name{font-size:.46rem;color:var(--white);}
+.mgami-pts{margin-left:auto;font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--gold);}
+.meco-row{display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.meco-lbl{font-size:.44rem;color:var(--muted);}
+.meco-val{font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--green);}
+.mnorm{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;display:flex;align-items:flex-start;gap:.35rem;flex-shrink:0;}
+.mnorm-dot{width:5px;height:5px;border-radius:50%;margin-top:.22rem;flex-shrink:0;}
+.mnorm-title{font-size:.46rem;color:var(--white);line-height:1.3;}
+.mnorm-date{font-size:.38rem;color:var(--muted);}
+.momni{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;display:flex;align-items:center;gap:.38rem;flex-shrink:0;}
+.momni-icon{font-size:.9rem;flex-shrink:0;}
+.momni-name{font-size:.46rem;color:var(--white);}
+.momni-meta{font-size:.38rem;color:var(--muted);}
+.momni-s{margin-left:auto;font-size:.38rem;padding:.1rem .3rem;border-radius:100px;}
+.mpred{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.4rem .45rem;flex-shrink:0;}
+.mpred-l{font-size:.42rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.15rem;}
+.mpred-v{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--gold);}
+.mpred-d{font-size:.4rem;margin-top:.06rem;}
+
+/* mini phone caption */
+.mini-caption{text-align:center;}
+.mini-cap-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);}
+.mini-cap-desc{font-size:.78rem;color:var(--muted);line-height:1.5;margin-top:.25rem;max-width:160px;}
 
 /* ── PLANS ── */
 .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
 .plan-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem 1.8rem;position:relative;transition:transform .3s,box-shadow .3s;}
 .plan-card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,.4);}
 .plan-card.featured{border-color:rgba(201,168,76,.4);background:linear-gradient(135deg,var(--card) 0%,rgba(201,168,76,.04) 100%);}
-.plan-card.featured::before{content:'MÁS POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-size:.6rem;font-weight:500;letter-spacing:.1em;padding:.3rem .9rem;border-radius:0 0 10px 10px;}
+.plan-card.featured::before{content:'MÁS POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-size:.62rem;font-weight:500;letter-spacing:.1em;padding:.3rem .9rem;border-radius:0 0 10px 10px;}
 .plan-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);margin-bottom:.25rem;}
-.plan-sub{font-size:.78rem;color:var(--muted);margin-bottom:1.5rem;letter-spacing:.03em;}
+.plan-sub{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem;letter-spacing:.03em;}
 .price-amt{font-family:'Cormorant Garamond',serif;font-size:2.7rem;font-weight:300;color:var(--gold);line-height:1;}
-.price-per{font-size:.8rem;color:var(--muted);margin-left:.2rem;}
+.price-per{font-size:.82rem;color:var(--muted);margin-left:.2rem;}
 .plan-div{height:1px;background:var(--border);margin:1.5rem 0;}
 .plan-feats{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
-.plan-feat{display:flex;align-items:flex-start;gap:.6rem;font-size:.85rem;color:var(--text);line-height:1.45;}
-.plan-feat::before{content:'—';color:var(--gold);font-size:.7rem;flex-shrink:0;margin-top:.1rem;}
+.plan-feat{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--text);line-height:1.45;}
+.plan-feat::before{content:'—';color:var(--gold);font-size:.72rem;flex-shrink:0;margin-top:.1rem;}
 
 /* ── FOUNDERS ── */
 .founders-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
@@ -191,22 +290,22 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .founder-card:hover::before{opacity:1;}
 .founder-avatar{width:64px;height:64px;border-radius:50%;background:var(--gold-dim);border:1.5px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--gold);margin-bottom:1.2rem;}
 .founder-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--white);margin-bottom:.2rem;}
-.founder-role{font-size:.8rem;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-bottom:1rem;}
-.founder-desc{font-size:.85rem;line-height:1.7;color:var(--muted);}
+.founder-role{font-size:.82rem;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-bottom:1rem;}
+.founder-desc{font-size:.88rem;line-height:1.7;color:var(--muted);}
 .founder-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem;}
-.founder-tag{font-size:.7rem;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:.25rem .7rem;letter-spacing:.03em;}
+.founder-tag{font-size:.72rem;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:.25rem .7rem;letter-spacing:.03em;}
 
 /* ── FOOTER ── */
 .footer{padding:4rem 7vw;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);}
 .footer-brand{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--white);letter-spacing:.08em;}
 .footer-brand span{color:var(--gold);}
-.footer-tag{font-size:.78rem;color:var(--muted);margin-top:.25rem;letter-spacing:.05em;}
-.footer-pillars{display:flex;gap:2rem;font-size:.78rem;color:var(--muted);letter-spacing:.05em;}
+.footer-tag{font-size:.8rem;color:var(--muted);margin-top:.25rem;letter-spacing:.05em;}
+.footer-pillars{display:flex;gap:2rem;font-size:.8rem;color:var(--muted);letter-spacing:.05em;}
 .fp{position:relative;}
 .fp::before{content:'·';position:absolute;left:-1.1rem;color:var(--gold);}
 .fp:first-child::before{display:none;}
 
-/* ── ANIMATIONS ── */
+/* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
@@ -215,7 +314,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </head>
 <body>
 
-<!-- ══════════════ HERO ══════════════ -->
+<!-- ══ HERO ══ -->
 <section class="hero">
   <div>
     <div class="eyebrow">Gestoría digital con IA · Madrid 2026</div>
@@ -231,7 +330,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="screen-tabs">
       <button class="tab-btn active" onclick="sw('dashboard',this)">Dashboard</button>
       <button class="tab-btn" onclick="sw('chat',this)">Chat IA</button>
-      <button class="tab-btn" onclick="sw('empleados',this)">SS / Empleados</button>
+      <button class="tab-btn" onclick="sw('empleados',this)">SS · Empleados</button>
       <button class="tab-btn" onclick="sw('proveedores',this)">Proveedores</button>
       <button class="tab-btn" onclick="sw('onboarding',this)">Onboarding</button>
     </div>
@@ -243,255 +342,79 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <div class="phone-notch"></div>
         <div class="phone-screen">
 
-          <!-- ─ DASHBOARD ─ -->
+          <!-- DASHBOARD -->
           <div class="screen active" id="screen-dashboard">
-            <div class="s-header">
-              <div class="s-title">PYM</div>
-              <div class="s-sub">Junio 2026</div>
-            </div>
+            <div class="s-header"><div class="s-title">PYM</div><div class="s-sub">Junio 2026</div></div>
             <div class="grid2">
-              <div class="pcard">
-                <div class="plabel">Facturas</div>
-                <div class="pval">247</div>
-                <div class="psub pos">↑ 12% este mes</div>
-              </div>
-              <div class="pcard">
-                <div class="plabel">Estado fiscal</div>
-                <div class="pval" style="font-size:1rem;color:var(--green)">Al día</div>
-                <div class="psub">IVA: presentado</div>
-              </div>
-              <div class="pcard">
-                <div class="plabel">Papel ahorrado</div>
-                <div class="pval">92<span style="font-size:.85rem">%</span></div>
-                <div class="psub pos">Objetivo: 90% ✓</div>
-              </div>
-              <div class="pcard">
-                <div class="plabel">Próximo plazo</div>
-                <div class="pval" style="font-size:1rem;color:var(--red)">3 días</div>
-                <div class="psub">Modelo 303</div>
-              </div>
+              <div class="pcard"><div class="plabel">Facturas</div><div class="pval">247</div><div class="psub pos">↑ 12% mes</div></div>
+              <div class="pcard"><div class="plabel">Fiscal</div><div class="pval" style="font-size:1rem;color:var(--green)">Al día</div><div class="psub">IVA ok</div></div>
+              <div class="pcard"><div class="plabel">Papel ahorrado</div><div class="pval">92<span style="font-size:.8rem">%</span></div><div class="psub pos">✓ Objetivo</div></div>
+              <div class="pcard"><div class="plabel">Próximo plazo</div><div class="pval" style="font-size:1rem;color:var(--red)">3 días</div><div class="psub">Modelo 303</div></div>
             </div>
-            <div class="mini-chart">
-              <div class="plabel">Ingresos · últimas 8 semanas</div>
-              <div class="chart-bars">
-                <div class="cbar gd" style="height:43%"></div>
-                <div class="cbar gd" style="height:52%"></div>
-                <div class="cbar gd" style="height:38%"></div>
-                <div class="cbar gd" style="height:63%"></div>
-                <div class="cbar gd" style="height:57%"></div>
-                <div class="cbar gd" style="height:71%"></div>
-                <div class="cbar gd" style="height:79%"></div>
-                <div class="cbar g"  style="height:94%"></div>
-              </div>
-            </div>
+            <div class="mini-chart"><div class="plabel">Ingresos · 8 semanas</div><div class="chart-bars"><div class="cbar gd" style="height:43%"></div><div class="cbar gd" style="height:52%"></div><div class="cbar gd" style="height:38%"></div><div class="cbar gd" style="height:63%"></div><div class="cbar gd" style="height:57%"></div><div class="cbar gd" style="height:71%"></div><div class="cbar gd" style="height:79%"></div><div class="cbar g" style="height:94%"></div></div></div>
             <div class="alert-list">
-              <div class="alert-item">
-                <div class="adot r"></div>
-                <div class="atext">Declaración trimestral en <strong>3 días</strong></div>
-                <div class="atime">Urgente</div>
-              </div>
-              <div class="alert-item">
-                <div class="adot g"></div>
-                <div class="atext">Nóminas de mayo — revisadas ✓</div>
-                <div class="atime">Hoy</div>
-              </div>
+              <div class="alert-item"><div class="adot r"></div><div class="atext">Declaración trimestral en <strong>3 días</strong></div><div class="atime">Urgente</div></div>
+              <div class="alert-item"><div class="adot gr"></div><div class="atext">Nóminas mayo — revisadas ✓</div><div class="atime">Hoy</div></div>
             </div>
           </div>
 
-          <!-- ─ CHAT IA ─ -->
+          <!-- CHAT -->
           <div class="screen" id="screen-chat">
-            <div class="s-header">
-              <div class="s-title">Chat IA</div>
-              <div style="width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 7px var(--green);"></div>
-            </div>
+            <div class="s-header"><div class="s-title">Chat IA</div><div style="width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 7px var(--green);"></div></div>
             <div class="chat-list">
-              <div class="cmsg mai">
-                <div class="msender">PYM · Asistente IA</div>
-                ¡Hola Marta! Tu Modelo 303 vence en 3 días. Tu gestor ya tiene el borrador listo para revisión.
-              </div>
-              <div class="cmsg muser">¿Cuánto tengo que pagar este trimestre?</div>
-              <div class="cmsg mai">
-                <div class="msender">PYM · Asistente IA</div>
-                IVA devengado 2.840 €, deducible 1.120 €. Cuota estimada: <strong style="color:var(--gold)">1.720 €</strong>. El gestor lo valida antes del envío.
-              </div>
+              <div class="cmsg mai"><div class="msender">PYM · IA</div>Tu Modelo 303 vence en 3 días. El gestor ya tiene el borrador listo.</div>
+              <div class="cmsg muser">¿Cuánto pago este trimestre?</div>
+              <div class="cmsg mai"><div class="msender">PYM · IA</div>IVA devengado 2.840€, deducible 1.120€. Cuota: <strong style="color:var(--gold)">1.720€</strong>. Gestor lo valida antes del envío.</div>
               <div class="cmsg muser">¿Qué necesito para dar de alta a una empleada?</div>
-              <div class="cmsg mai">
-                <div class="msender">PYM · Asistente IA</div>
-                Preparo el checklist ahora. Lo tendrás en tu panel en menos de 2 min 📋
-              </div>
+              <div class="cmsg mai"><div class="msender">PYM · IA</div>Checklist listo en 2 min 📋</div>
             </div>
-            <div class="chat-input">
-              <span class="chat-ph">Escribe tu consulta…</span>
-              <div class="send-btn"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div>
-            </div>
+            <div class="chat-input"><span class="chat-ph">Escribe tu consulta…</span><div class="send-btn"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div></div>
           </div>
 
-          <!-- ─ EMPLEADOS / SS ─ -->
+          <!-- EMPLEADOS/SS -->
           <div class="screen" id="screen-empleados">
-            <div class="s-header">
-              <div class="s-title">SS · Empleados</div>
-              <div class="s-sub">3 activos</div>
-            </div>
+            <div class="s-header"><div class="s-title">SS · Empleados</div><div class="s-sub">3 activos</div></div>
             <div class="grid3">
-              <div class="pcard" style="padding:.6rem .55rem">
-                <div class="plabel">TC2 cotiz.</div>
-                <div class="pval" style="font-size:1rem;color:var(--green)">OK</div>
-                <div class="psub">Mayo 2026</div>
-              </div>
-              <div class="pcard" style="padding:.6rem .55rem">
-                <div class="plabel">Nóminas</div>
-                <div class="pval" style="font-size:1rem">3/3</div>
-                <div class="psub pos">Generadas</div>
-              </div>
-              <div class="pcard" style="padding:.6rem .55rem">
-                <div class="plabel">IRPF ret.</div>
-                <div class="pval" style="font-size:1rem">15%</div>
-                <div class="psub">Calculado</div>
-              </div>
+              <div class="pcard" style="padding:.58rem .5rem"><div class="plabel">TC2</div><div class="pval" style="font-size:.95rem;color:var(--green)">OK</div><div class="psub">Mayo</div></div>
+              <div class="pcard" style="padding:.58rem .5rem"><div class="plabel">Nóminas</div><div class="pval" style="font-size:.95rem">3/3</div><div class="psub pos">Listas</div></div>
+              <div class="pcard" style="padding:.58rem .5rem"><div class="plabel">IRPF</div><div class="pval" style="font-size:.95rem">15%</div><div class="psub">Calc.</div></div>
             </div>
-            <div class="emp-row">
-              <div class="emp-avatar">MG</div>
-              <div>
-                <div class="emp-name">Marta González</div>
-                <div class="emp-role">Autónoma · Socia</div>
-              </div>
-              <div class="emp-status st-ok">Al día</div>
-            </div>
-            <div class="emp-row">
-              <div class="emp-avatar">LR</div>
-              <div>
-                <div class="emp-name">Laura Ruiz</div>
-                <div class="emp-role">Empleada · T. completo</div>
-              </div>
-              <div class="emp-status st-ok">Activa</div>
-            </div>
-            <div class="emp-row">
-              <div class="emp-avatar">CR</div>
-              <div>
-                <div class="emp-name">Carlos Ramos</div>
-                <div class="emp-role">Empleado · T. parcial</div>
-              </div>
-              <div class="emp-status st-warn">Baja médica</div>
-            </div>
-            <div class="alert-item">
-              <div class="adot g"></div>
-              <div class="atext">Alta SS Carlos Ramos — gestionada automáticamente</div>
-            </div>
-            <div class="alert-item">
-              <div class="adot r"></div>
-              <div class="atext">Vencimiento cotizaciones: <strong>20 junio</strong></div>
-              <div class="atime">6 días</div>
-            </div>
+            <div class="emp-row"><div class="emp-avatar">MG</div><div><div class="emp-name">Marta González</div><div class="emp-role">Autónoma · Socia</div></div><div class="emp-status st-ok">Al día</div></div>
+            <div class="emp-row"><div class="emp-avatar">LR</div><div><div class="emp-name">Laura Ruiz</div><div class="emp-role">Empleada · T. completo</div></div><div class="emp-status st-ok">Activa</div></div>
+            <div class="emp-row"><div class="emp-avatar">CR</div><div><div class="emp-name">Carlos Ramos</div><div class="emp-role">Empleado · T. parcial</div></div><div class="emp-status st-warn">Baja médica</div></div>
+            <div class="alert-item"><div class="adot r"></div><div class="atext">Cotizaciones vencen en <strong>6 días</strong></div><div class="atime">20 jun</div></div>
           </div>
 
-          <!-- ─ PROVEEDORES ─ -->
+          <!-- PROVEEDORES -->
           <div class="screen" id="screen-proveedores">
-            <div class="s-header">
-              <div class="s-title">Proveedores</div>
-              <div class="s-sub">4 facturas pend.</div>
-            </div>
+            <div class="s-header"><div class="s-title">Proveedores</div><div class="s-sub">4 facturas pend.</div></div>
             <div class="grid2">
-              <div class="pcard">
-                <div class="plabel">Por pagar</div>
-                <div class="pval">3.240 €</div>
-                <div class="psub neg">4 facturas</div>
-              </div>
-              <div class="pcard">
-                <div class="plabel">Pagado (mes)</div>
-                <div class="pval">1.890 €</div>
-                <div class="psub pos">Liquidado</div>
-              </div>
+              <div class="pcard"><div class="plabel">Por pagar</div><div class="pval">3.240€</div><div class="psub neg">4 facturas</div></div>
+              <div class="pcard"><div class="plabel">Pagado mes</div><div class="pval">1.890€</div><div class="psub pos">Liquidado</div></div>
             </div>
-            <div class="prov-row">
-              <div class="prov-logo" style="background:rgba(122,180,224,.12);color:var(--blue)">AW</div>
-              <div class="prov-info">
-                <div class="prov-name">AWS · Infraestructura</div>
-                <div class="prov-detail">Vence 30 jun · Recurrente</div>
-              </div>
-              <div class="prov-amount">105 €</div>
-            </div>
-            <div class="prov-row">
-              <div class="prov-logo" style="background:rgba(201,168,76,.12);color:var(--gold)">DG</div>
-              <div class="prov-info">
-                <div class="prov-name">Diseño Gráfico</div>
-                <div class="prov-detail">Vence 15 jun · Puntual</div>
-              </div>
-              <div class="prov-amount">480 €</div>
-            </div>
-            <div class="prov-row">
-              <div class="prov-logo" style="background:rgba(107,207,143,.12);color:var(--green)">MK</div>
-              <div class="prov-info">
-                <div class="prov-name">Marketing SEM</div>
-                <div class="prov-detail">Vence 1 jul · Mensual</div>
-              </div>
-              <div class="prov-amount">1.060 €</div>
-            </div>
-            <div class="prov-row">
-              <div class="prov-logo" style="background:rgba(224,120,120,.12);color:var(--red)">CW</div>
-              <div class="prov-info">
-                <div class="prov-name">Coworking Madrid</div>
-                <div class="prov-detail">Vence 5 jun · <strong style="color:var(--red)">Vencida</strong></div>
-              </div>
-              <div class="prov-amount">700 €</div>
-            </div>
-            <div class="alert-item">
-              <div class="adot r"></div>
-              <div class="atext">Factura Coworking vencida — gestor notificado</div>
-            </div>
+            <div class="prov-row"><div class="prov-logo" style="background:rgba(122,180,224,.12);color:var(--blue)">AW</div><div class="prov-info"><div class="prov-name">AWS · Cloud</div><div class="prov-detail">30 jun · Recurrente</div></div><div class="prov-amount">105€</div></div>
+            <div class="prov-row"><div class="prov-logo" style="background:rgba(201,168,76,.12);color:var(--gold)">DG</div><div class="prov-info"><div class="prov-name">Diseño Gráfico</div><div class="prov-detail">15 jun · Puntual</div></div><div class="prov-amount">480€</div></div>
+            <div class="prov-row"><div class="prov-logo" style="background:rgba(107,207,143,.12);color:var(--green)">MK</div><div class="prov-info"><div class="prov-name">Marketing SEM</div><div class="prov-detail">1 jul · Mensual</div></div><div class="prov-amount">1.060€</div></div>
+            <div class="prov-row"><div class="prov-logo" style="background:rgba(224,120,120,.12);color:var(--red)">CW</div><div class="prov-info"><div class="prov-name">Coworking Madrid</div><div class="prov-detail"><strong style="color:var(--red)">Vencida</strong></div></div><div class="prov-amount">700€</div></div>
           </div>
 
-          <!-- ─ ONBOARDING ─ -->
+          <!-- ONBOARDING -->
           <div class="screen" id="screen-onboarding">
-            <div class="s-header">
-              <div class="s-title">Incorporación</div>
-              <div class="s-sub">Día 3 de 5</div>
-            </div>
-            <div class="prog-wrap">
-              <div class="prog-top">
-                <span class="prog-lbl">Progreso de onboarding</span>
-                <span class="prog-pct">60%</span>
-              </div>
-              <div class="prog-track"><div class="prog-fill"></div></div>
-            </div>
-            <div class="step-row">
-              <div class="step-ico s-done">✓</div>
-              <div><div class="step-n">Alta de autónomo</div><div class="step-d">Completado · Gratuito</div></div>
-            </div>
-            <div class="step-row">
-              <div class="step-ico s-done">✓</div>
-              <div><div class="step-n">Documentación inicial</div><div class="step-d">Verificada por gestor</div></div>
-            </div>
-            <div class="step-row" style="border-color:rgba(201,168,76,.3)">
-              <div class="step-ico s-act">→</div>
-              <div><div class="step-n">Calendario fiscal IA</div><div class="step-d" style="color:var(--gold)">En curso · Generando…</div></div>
-            </div>
-            <div class="step-row">
-              <div class="step-ico s-pend">4</div>
-              <div><div class="step-n">Videollamada gestor</div><div class="step-d">Mañana · 10:00 h</div></div>
-            </div>
-            <div class="step-row">
-              <div class="step-ico s-pend">5</div>
-              <div><div class="step-n">Acceso completo</div><div class="step-d">Día 5</div></div>
-            </div>
+            <div class="s-header"><div class="s-title">Incorporación</div><div class="s-sub">Día 3 de 5</div></div>
+            <div class="prog-wrap"><div class="prog-top"><span class="prog-lbl">Progreso</span><span class="prog-pct">60%</span></div><div class="prog-track"><div class="prog-fill" style="width:60%"></div></div></div>
+            <div class="step-row"><div class="step-ico s-done">✓</div><div><div class="step-n">Alta de autónomo</div><div class="step-d">Completado · Gratuito</div></div></div>
+            <div class="step-row"><div class="step-ico s-done">✓</div><div><div class="step-n">Documentación inicial</div><div class="step-d">Verificada por gestor</div></div></div>
+            <div class="step-row" style="border-color:rgba(201,168,76,.3)"><div class="step-ico s-act">→</div><div><div class="step-n">Calendario fiscal IA</div><div class="step-d" style="color:var(--gold)">Generando…</div></div></div>
+            <div class="step-row"><div class="step-ico s-pend">4</div><div><div class="step-n">Videollamada gestor</div><div class="step-d">Mañana · 10:00 h</div></div></div>
+            <div class="step-row"><div class="step-ico s-pend">5</div><div><div class="step-n">Acceso completo</div><div class="step-d">Día 5</div></div></div>
           </div>
 
-          <!-- bottom nav -->
           <div class="phone-nav">
-            <div class="nav-item active" id="nav-dashboard" onclick="sw('dashboard',null,true)">
-              <span class="nav-icon">⬡</span><span class="nav-lbl">Inicio</span><div class="nav-dot"></div>
-            </div>
-            <div class="nav-item" id="nav-chat" onclick="sw('chat',null,true)">
-              <span class="nav-icon">◎</span><span class="nav-lbl">Chat IA</span><div class="nav-dot"></div>
-            </div>
-            <div class="nav-item" id="nav-empleados" onclick="sw('empleados',null,true)">
-              <span class="nav-icon">◈</span><span class="nav-lbl">SS</span><div class="nav-dot"></div>
-            </div>
-            <div class="nav-item" id="nav-proveedores" onclick="sw('proveedores',null,true)">
-              <span class="nav-icon">◷</span><span class="nav-lbl">Proveed.</span><div class="nav-dot"></div>
-            </div>
-            <div class="nav-item" id="nav-onboarding" onclick="sw('onboarding',null,true)">
-              <span class="nav-icon">◬</span><span class="nav-lbl">Estado</span><div class="nav-dot"></div>
-            </div>
+            <div class="nav-item active" id="nav-dashboard" onclick="sw('dashboard',null,true)"><span class="nav-icon">⬡</span><span class="nav-lbl">Inicio</span><div class="nav-dot"></div></div>
+            <div class="nav-item" id="nav-chat" onclick="sw('chat',null,true)"><span class="nav-icon">◎</span><span class="nav-lbl">Chat IA</span><div class="nav-dot"></div></div>
+            <div class="nav-item" id="nav-empleados" onclick="sw('empleados',null,true)"><span class="nav-icon">◈</span><span class="nav-lbl">SS</span><div class="nav-dot"></div></div>
+            <div class="nav-item" id="nav-proveedores" onclick="sw('proveedores',null,true)"><span class="nav-icon">◷</span><span class="nav-lbl">Proveed.</span><div class="nav-dot"></div></div>
+            <div class="nav-item" id="nav-onboarding" onclick="sw('onboarding',null,true)"><span class="nav-icon">◬</span><span class="nav-lbl">Estado</span><div class="nav-dot"></div></div>
           </div>
         </div>
       </div>
@@ -501,89 +424,362 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 <div class="gold-line"></div>
 
-<!-- ══════════════ STATS ══════════════ -->
+<!-- ══ STATS ══ -->
 <section class="stats">
-  <div class="stat-item reveal">
-    <div class="stat-number">3,5M</div>
-    <div class="stat-label">autónomos en España con necesidad activa</div>
-  </div>
-  <div class="stat-item reveal" style="transition-delay:.1s">
-    <div class="stat-number">272</div>
-    <div class="stat-label">clientes para el punto de equilibrio</div>
-  </div>
-  <div class="stat-item reveal" style="transition-delay:.2s">
-    <div class="stat-number">7,1×</div>
-    <div class="stat-label">ratio LTV/CAC estimado en lanzamiento</div>
-  </div>
-  <div class="stat-item reveal" style="transition-delay:.3s">
-    <div class="stat-number">90%</div>
-    <div class="stat-label">reducción de papel en 12 meses</div>
-  </div>
+  <div class="stat-item reveal"><div class="stat-number">3,5M</div><div class="stat-label">autónomos en España con necesidad activa</div></div>
+  <div class="stat-item reveal" style="transition-delay:.1s"><div class="stat-number">272</div><div class="stat-label">clientes para el punto de equilibrio</div></div>
+  <div class="stat-item reveal" style="transition-delay:.2s"><div class="stat-number">7,1×</div><div class="stat-label">ratio LTV/CAC estimado en lanzamiento</div></div>
+  <div class="stat-item reveal" style="transition-delay:.3s"><div class="stat-number">90%</div><div class="stat-label">reducción de papel en 12 meses</div></div>
 </section>
 
-<!-- ══════════════ FEATURES ══════════════ -->
+<!-- ══ MINI PHONES GRID — TODAS LAS FUNCIONES ══ -->
 <section class="sec">
-  <div class="sec-label reveal">Funciones de la aplicación</div>
-  <h2 class="sec-title reveal" style="transition-delay:.1s">Todo lo que necesita su negocio, <em>en una app.</em></h2>
-  <div class="features-grid reveal" style="transition-delay:.2s">
-    <div class="feat">
-      <span class="feat-icon">◈</span>
-      <div class="feat-name">IA proactiva 24/7</div>
-      <p class="feat-desc">Alertas predictivas de plazos fiscales, análisis automáticos y notificaciones en tiempo real antes de que surja el problema.</p>
+  <div class="sec-label reveal">Todas las funciones</div>
+  <h2 class="sec-title reveal" style="transition-delay:.1s">Cada pantalla, <em>una función.</em></h2>
+
+  <div class="mini-phones-grid">
+
+    <!-- 1. Dashboard financiero -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.05s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Dashboard</div>
+          <div class="mg2">
+            <div class="mc"><div class="ml">Ingresos</div><div class="mv">8.240€</div><div class="ms2 pos">↑ 14%</div></div>
+            <div class="mc"><div class="ml">Gastos</div><div class="mv">3.180€</div><div class="ms2 neg">↓ 6%</div></div>
+          </div>
+          <div class="mc"><div class="ml">Margen bruto</div><div class="mv">5.060€</div><div class="ms2 pos">61,4% margen</div></div>
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;flex-shrink:0;">
+            <div class="ml">Ingresos · 6 semanas</div>
+            <div class="mbars-wrap"><div class="mbb" style="height:40%;background:rgba(201,168,76,.3)"></div><div class="mbb" style="height:55%;background:rgba(201,168,76,.3)"></div><div class="mbb" style="height:45%;background:rgba(201,168,76,.3)"></div><div class="mbb" style="height:70%;background:rgba(201,168,76,.3)"></div><div class="mbb" style="height:80%;background:rgba(201,168,76,.3)"></div><div class="mbb" style="height:95%;background:var(--gold)"></div></div>
+          </div>
+          <div class="malert"><div class="mdot" style="background:var(--green)"></div><div class="malert-text">NPS actual: <strong style="color:var(--gold)">84</strong> puntos ✓</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Dashboard financiero</div><div class="mini-cap-desc">Ingresos, gastos y márgenes en tiempo real con comparativas semanales</div></div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">◎</span>
-      <div class="feat-name">Gestor colegiado</div>
-      <p class="feat-desc">Arquitectura RAG + validación humana obligatoria. Ningún documento se envía a Hacienda sin revisión y firma del gestor.</p>
+
+    <!-- 2. Chat IA 24/7 -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.08s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-shrink:0;margin-bottom:.1rem"><div class="ms-title">Chat IA</div><div style="width:6px;height:6px;background:var(--green);border-radius:50%;"></div></div>
+          <div class="mai-msg"><div class="msend">PYM · IA</div>Tu Modelo 303 vence en 3 días. Borrador listo para revisión.</div>
+          <div class="muser-msg">¿Cuánto pago?</div>
+          <div class="mai-msg"><div class="msend">PYM · IA</div>Cuota estimada: <strong style="color:var(--gold)">1.720€</strong>. Gestor lo valida antes del envío.</div>
+          <div class="muser-msg">¿Puedo desgravar el portátil?</div>
+          <div class="mai-msg"><div class="msend">PYM · IA</div>Sí, deducible 100% si es uso exclusivo profesional 📋</div>
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.3rem .5rem;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;"><span style="font-size:.42rem;color:var(--muted)">Consulta…</span><div style="width:16px;height:16px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="7" height="7" viewBox="0 0 24 24" fill="#000"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Chat IA 24/7</div><div class="mini-cap-desc">Asistente inteligente disponible siempre, con arquitectura RAG fiscal</div></div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">⬡</span>
-      <div class="feat-name">Gestión fiscal completa</div>
-      <p class="feat-desc">Modelos 303, 130, 111, 190, 347, 390. Declaraciones trimestrales y anuales gestionadas de forma automática.</p>
+
+    <!-- 3. Gestión fiscal -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.11s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Gestión Fiscal</div>
+          <div class="mc"><div class="ml">Estado general</div><div class="mv" style="color:var(--green);font-size:.9rem">Al día ✓</div><div class="ms2">Todos los modelos presentados</div></div>
+          <div class="mrow"><div class="mdot" style="background:var(--green)"></div><div><div class="mrname">Modelo 303 · IVA</div><div class="mrmeta">T1 2026 · Presentado</div></div><div class="mrbadge st-ok">OK</div></div>
+          <div class="mrow"><div class="mdot" style="background:var(--green)"></div><div><div class="mrname">Modelo 130 · IRPF</div><div class="mrmeta">T1 2026 · Presentado</div></div><div class="mrbadge st-ok">OK</div></div>
+          <div class="mrow"><div class="mdot" style="background:var(--gold)"></div><div><div class="mrname">Modelo 111 · Retenc.</div><div class="mrmeta">T2 2026 · Pendiente</div></div><div class="mrbadge st-pend">3 días</div></div>
+          <div class="mrow"><div class="mdot" style="background:var(--muted)"></div><div><div class="mrname">Modelo 347 · Anual</div><div class="mrmeta">Próximo: Feb 2027</div></div><div class="mrbadge" style="background:var(--deep);border:1px solid var(--border);color:var(--muted)">Pendiente</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Gestión fiscal completa</div><div class="mini-cap-desc">Modelos 303, 130, 111, 190, 347, 390 gestionados automáticamente</div></div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">◷</span>
-      <div class="feat-name">Seguridad Social y nóminas</div>
-      <p class="feat-desc">Altas y bajas de empleados, cotizaciones TC2, nóminas automatizadas, control de absentismo y registro horario.</p>
+
+    <!-- 4. Seguridad Social y nóminas -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.14s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">SS · Nóminas</div>
+          <div class="mg3">
+            <div class="mc" style="padding:.38rem .38rem"><div class="ml">TC2</div><div class="mv" style="font-size:.85rem;color:var(--green)">OK</div></div>
+            <div class="mc" style="padding:.38rem .38rem"><div class="ml">Nóm.</div><div class="mv" style="font-size:.85rem">3/3</div></div>
+            <div class="mc" style="padding:.38rem .38rem"><div class="ml">IRPF</div><div class="mv" style="font-size:.85rem">15%</div></div>
+          </div>
+          <div class="mrow"><div class="mava">MG</div><div><div class="mrname">Marta González</div><div class="mrmeta">Autónoma · Socia</div></div><div class="mrbadge st-ok">Al día</div></div>
+          <div class="mrow"><div class="mava">LR</div><div><div class="mrname">Laura Ruiz</div><div class="mrmeta">Empleada · TC</div></div><div class="mrbadge st-ok">Activa</div></div>
+          <div class="mrow"><div class="mava">CR</div><div><div class="mrname">Carlos Ramos</div><div class="mrmeta">Empleado · TP</div></div><div class="mrbadge st-warn">Baja</div></div>
+          <div class="malert"><div class="mdot" style="background:var(--red)"></div><div class="malert-text">Cotizaciones vencen en <strong>6 días</strong></div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Seguridad Social y nóminas</div><div class="mini-cap-desc">Altas, bajas, cotizaciones TC2, nóminas y control de absentismo</div></div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">◬</span>
-      <div class="feat-name">Gestión de proveedores</div>
-      <p class="feat-desc">Control de facturas recibidas, vencimientos, pagos pendientes y conciliación automática con la contabilidad.</p>
+
+    <!-- 5. Gestión de proveedores -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.17s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Proveedores</div>
+          <div class="mg2">
+            <div class="mc"><div class="ml">Por pagar</div><div class="mv">3.240€</div><div class="ms2 neg">4 fact.</div></div>
+            <div class="mc"><div class="ml">Pagado</div><div class="mv">1.890€</div><div class="ms2 pos">Liq.</div></div>
+          </div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:6px;background:rgba(122,180,224,.12);display:flex;align-items:center;justify-content:center;font-size:.5rem;color:var(--blue);font-weight:600;flex-shrink:0">AW</div><div><div class="mrname">AWS · Cloud</div><div class="mrmeta">30 jun</div></div><div style="font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--gold)">105€</div></div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:6px;background:rgba(107,207,143,.12);display:flex;align-items:center;justify-content:center;font-size:.5rem;color:var(--green);font-weight:600;flex-shrink:0">MK</div><div><div class="mrname">Marketing SEM</div><div class="mrmeta">1 jul</div></div><div style="font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--gold)">1.060€</div></div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:6px;background:rgba(224,120,120,.12);display:flex;align-items:center;justify-content:center;font-size:.5rem;color:var(--red);font-weight:600;flex-shrink:0">CW</div><div><div class="mrname">Coworking</div><div class="mrmeta" style="color:var(--red)">Vencida</div></div><div style="font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--red)">700€</div></div>
+          <div class="malert"><div class="mdot" style="background:var(--red)"></div><div class="malert-text">Factura Coworking vencida — gestor notificado</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Gestión de proveedores</div><div class="mini-cap-desc">Facturas recibidas, vencimientos y conciliación automática</div></div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">◯</span>
-      <div class="feat-name">E-commerce Amazon/Shopify</div>
-      <p class="feat-desc">Gestión fiscal especializada para tiendas online. IVA intracomunitario, OSS y declaraciones específicas de comercio digital.</p>
+
+    <!-- 6. Calendario fiscal IA -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.2s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Calendario Fiscal</div>
+          <div class="mc"><div class="ml">Generado por IA</div><div class="mv" style="font-size:.85rem;color:var(--green)">Personalizado ✓</div><div class="ms2">Basado en tu actividad</div></div>
+          <div class="mcal"><div class="mcal-day">20<div class="mcal-meta">JUN</div></div><div><div class="mcal-name">Modelo 111 · Retenciones</div><div class="mcal-meta">T2 2026</div></div><div class="mcal-s" style="background:rgba(224,120,120,.12);color:var(--red);border:1px solid rgba(224,120,120,.25)">3 días</div></div>
+          <div class="mcal"><div class="mcal-day">30<div class="mcal-meta">JUN</div></div><div><div class="mcal-name">Modelo 303 · IVA</div><div class="mcal-meta">T2 2026</div></div><div class="mcal-s" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,.25)">13 días</div></div>
+          <div class="mcal"><div class="mcal-day">20<div class="mcal-meta">JUL</div></div><div><div class="mcal-name">Modelo 130 · IRPF</div><div class="mcal-meta">T2 2026</div></div><div class="mcal-s" style="background:var(--deep);border:1px solid var(--border);color:var(--muted)">33 días</div></div>
+          <div class="mcal"><div class="mcal-day">30<div class="mcal-meta">JAN</div></div><div><div class="mcal-name">Modelo 390 · Anual IVA</div><div class="mcal-meta">Ej. 2026</div></div><div class="mcal-s" style="background:var(--deep);border:1px solid var(--border);color:var(--muted)">7 meses</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Calendario fiscal IA</div><div class="mini-cap-desc">Plazos fiscales personalizados generados automáticamente por IA</div></div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">◫</span>
-      <div class="feat-name">Dashboard financiero</div>
-      <p class="feat-desc">Ingresos, gastos y márgenes en tiempo real. Comparativas semanales, mensuales y anuales con proyecciones automáticas.</p>
+
+    <!-- 7. Gestión documental -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.23s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Documentos</div>
+          <div class="mc"><div class="ml">Almacenamiento</div><div class="mv" style="font-size:.85rem">2,4 GB</div><div class="ms2">de 10 GB · 24% usado</div></div>
+          <div class="mbar" style="margin-bottom:.28rem"><div class="mbar-fill" style="width:24%;background:var(--gold)"></div></div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:5px;background:rgba(224,120,120,.15);display:flex;align-items:center;justify-content:center;font-size:.6rem;flex-shrink:0">📄</div><div><div class="mrname">Contrato empleada LR</div><div class="mrmeta">Firmado · 2 jun 2026</div></div><div class="mrbadge st-ok">Firmado</div></div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:5px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:.6rem;flex-shrink:0">📊</div><div><div class="mrname">Modelo 303 T1 2026</div><div class="mrmeta">Presentado · 20 abr</div></div><div class="mrbadge st-ok">OK</div></div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:5px;background:rgba(122,180,224,.12);display:flex;align-items:center;justify-content:center;font-size:.6rem;flex-shrink:0">🧾</div><div><div class="mrname">Facturas mayo 2026</div><div class="mrmeta">247 documentos</div></div><div class="mrbadge st-pend">Cloud</div></div>
+          <div class="malert"><div class="mdot" style="background:var(--blue)"></div><div class="malert-text">3 documentos nuevos clasificados por IA automáticamente</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Gestión documental</div><div class="mini-cap-desc">Archivo inteligente en la nube con clasificación y búsqueda automática por IA</div></div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">◻</span>
-      <div class="feat-name">Onboarding en 5 días</div>
-      <p class="feat-desc">Alta de autónomo gratuita, videollamada de bienvenida y calendario fiscal personalizado generado automáticamente por IA.</p>
+
+    <!-- 8. Análisis predictivo -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.26s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Análisis IA</div>
+          <div class="mc"><div class="ml">Previsión próximo trimestre</div><div class="mv">24.800€</div><div class="ms2 pos">↑ 16% vs T1</div></div>
+          <div class="mpred"><div class="mpred-l">Ingresos proyectados · julio</div><div class="mpred-v">8.960€</div><div class="mpred-d pos">↑ 9% vs junio · Alta confianza</div></div>
+          <div class="mpred"><div class="mpred-l">Gastos proyectados · julio</div><div class="mpred-v">3.420€</div><div class="mpred-d" style="color:var(--muted)">Estable · Sin anomalías</div></div>
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;flex-shrink:0;">
+            <div class="ml">Tendencia ingresos · 6 meses</div>
+            <div class="mbars-wrap"><div class="mbb" style="height:35%;background:rgba(122,180,224,.3)"></div><div class="mbb" style="height:48%;background:rgba(122,180,224,.3)"></div><div class="mbb" style="height:56%;background:rgba(122,180,224,.3)"></div><div class="mbb" style="height:65%;background:rgba(201,168,76,.5)"></div><div class="mbb" style="height:78%;background:rgba(201,168,76,.7)"></div><div class="mbb" style="height:88%;background:var(--gold)"></div></div>
+          </div>
+          <div class="malert"><div class="mdot" style="background:var(--blue)"></div><div class="malert-text">Anomalía detectada: pico de gasto inusual en agosto</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Análisis predictivo</div><div class="mini-cap-desc">Proyecciones de ingresos y gastos futuros generadas por IA</div></div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">◦</span>
-      <div class="feat-name">100% paper-free</div>
-      <p class="feat-desc">Facturación digital, firma electrónica y archivo en la nube. Informe anual de impacto ambiental incluido en planes superiores.</p>
+
+    <!-- 9. Reportes automáticos -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.29s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Reportes</div>
+          <div class="mc"><div class="ml">Último generado</div><div class="mv" style="font-size:.85rem;color:var(--green)">Mayo 2026</div><div class="ms2">Generado automáticamente</div></div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:5px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0">📈</div><div><div class="mrname">Informe mensual · Mayo</div><div class="mrmeta">P&L · Facturación · KPIs</div></div><div style="font-size:.42rem;color:var(--gold)">↓ PDF</div></div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:5px;background:rgba(107,207,143,.12);display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0">📊</div><div><div class="mrname">Informe trimestral · T1</div><div class="mrmeta">Fiscal · Laboral · Contable</div></div><div style="font-size:.42rem;color:var(--gold)">↓ PDF</div></div>
+          <div class="mrow"><div style="width:20px;height:20px;border-radius:5px;background:rgba(176,122,224,.12);display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0">🌿</div><div><div class="mrname">Informe sostenibilidad</div><div class="mrmeta">Impacto ambiental 2026</div></div><div style="font-size:.42rem;color:var(--green)">↓ PDF</div></div>
+          <div class="malert"><div class="mdot" style="background:var(--gold)"></div><div class="malert-text">Nuevo informe mensual disponible — generado por IA</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Reportes automáticos</div><div class="mini-cap-desc">Informes mensuales, trimestrales y anuales generados y exportables</div></div>
     </div>
+
+    <!-- 10. Firma electrónica -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.32s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Firma Digital</div>
+          <div class="mc"><div class="ml">Documentos pendientes</div><div class="mv" style="font-size:.85rem;color:var(--gold)">2 pendientes</div></div>
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.5rem .55rem;flex-shrink:0">
+            <div style="font-size:.6rem;color:var(--white);margin-bottom:.15rem">Contrato empleada Laura Ruiz</div>
+            <div style="font-size:.5rem;color:var(--muted);margin-bottom:.45rem">Contrato indefinido · 2 jun 2026</div>
+            <div class="msig"><span class="msig-t">✍️ Firma aquí</span></div>
+            <div style="margin-top:.35rem;display:grid;grid-template-columns:1fr 1fr;gap:.3rem">
+              <div class="mbtn">Rechazar</div>
+              <div class="mbtn gold">Firmar ✓</div>
+            </div>
+          </div>
+          <div class="mrow"><div style="font-size:.6rem;flex:1"><div class="mrname">Modelo 303 T2 · Hacienda</div><div class="mrmeta">Pendiente validación gestor</div></div><div class="mrbadge st-pend">Revisar</div></div>
+          <div class="malert"><div class="mdot" style="background:var(--green)"></div><div class="malert-text">Contrato LR firmado y archivado automáticamente</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Firma electrónica</div><div class="mini-cap-desc">Firma de contratos y documentos fiscales directamente desde la app</div></div>
+    </div>
+
+    <!-- 11. Registro horario -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.35s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Registro Horario</div>
+          <div class="mc"><div class="ml">Hoy · 2 jun 2026</div><div class="mv" style="color:var(--green);font-size:.9rem">Activo</div><div class="ms2">Laura Ruiz · en jornada</div></div>
+          <div class="mrow"><div class="mava">LR</div><div><div class="mrname">Laura Ruiz</div><div class="mrmeta">Entrada: 09:02 h</div></div><div class="mrbadge st-ok">Trabajando</div></div>
+          <div class="mrow"><div class="mava">CR</div><div><div class="mrname">Carlos Ramos</div><div class="mrmeta">Baja médica activa</div></div><div class="mrbadge st-warn">Baja</div></div>
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.4rem .45rem;flex-shrink:0">
+            <div class="ml">Horas esta semana · Laura</div>
+            <div class="mbars-wrap" style="margin-top:.3rem"><div class="mbb" style="height:85%;background:rgba(107,207,143,.4)"></div><div class="mbb" style="height:90%;background:rgba(107,207,143,.4)"></div><div class="mbb" style="height:75%;background:rgba(107,207,143,.4)"></div><div class="mbb" style="height:88%;background:rgba(107,207,143,.4)"></div><div class="mbb" style="height:45%;background:var(--green)"></div></div>
+          </div>
+          <div class="malert"><div class="mdot" style="background:var(--green)"></div><div class="malert-text">Registro horario conforme al convenio colectivo ✓</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Registro horario</div><div class="mini-cap-desc">Control de jornada laboral conforme al convenio colectivo vigente</div></div>
+    </div>
+
+    <!-- 12. E-commerce Amazon/Shopify -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.38s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">E-commerce</div>
+          <div class="mg2">
+            <div class="mc" style="padding:.4rem .42rem"><div class="ml">Amazon</div><div class="mv" style="font-size:.85rem;color:var(--green)">Sync</div><div class="ms2">247 pedidos</div></div>
+            <div class="mc" style="padding:.4rem .42rem"><div class="ml">Shopify</div><div class="mv" style="font-size:.85rem;color:var(--green)">Sync</div><div class="ms2">183 pedidos</div></div>
+          </div>
+          <div class="mc"><div class="ml">IVA intracomunitario OSS</div><div class="mv" style="font-size:.85rem">Al día ✓</div><div class="ms2">UE · Declaración T2 ok</div></div>
+          <div class="mrow"><div class="mdot" style="background:var(--gold)"></div><div><div class="mrname">IVA Amazon · Alemania</div><div class="mrmeta">Vence 31 jul · OSS</div></div><div class="mrbadge st-pend">Pendiente</div></div>
+          <div class="mrow"><div class="mdot" style="background:var(--green)"></div><div><div class="mrname">Shopify · Facturas</div><div class="mrmeta">Importadas automáticamente</div></div><div class="mrbadge st-ok">OK</div></div>
+          <div class="malert"><div class="mdot" style="background:var(--blue)"></div><div class="malert-text">183 facturas Shopify sincronizadas automáticamente</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">E-commerce</div><div class="mini-cap-desc">Integración con Amazon y Shopify, IVA intracomunitario y OSS automático</div></div>
+    </div>
+
+    <!-- 13. Onboarding -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.41s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Onboarding</div>
+          <div class="prog-wrap" style="margin-bottom:0"><div class="prog-top"><span class="prog-lbl" style="font-size:.52rem">Progreso · Día 3 de 5</span><span class="prog-pct" style="font-size:.9rem">60%</span></div><div class="prog-track"><div class="prog-fill" style="width:60%"></div></div></div>
+          <div class="mstep"><div class="mstep-ico s-done" style="width:18px;height:18px;font-size:.5rem">✓</div><div><div class="mstep-n">Alta de autónomo</div><div class="mstep-d">Completado · Gratuito</div></div></div>
+          <div class="mstep"><div class="mstep-ico s-done" style="width:18px;height:18px;font-size:.5rem">✓</div><div><div class="mstep-n">Documentación inicial</div><div class="mstep-d">Verificada por gestor</div></div></div>
+          <div class="mstep" style="border-color:rgba(201,168,76,.3)"><div class="mstep-ico s-act" style="width:18px;height:18px;font-size:.5rem">→</div><div><div class="mstep-n">Calendario fiscal IA</div><div class="mstep-d" style="color:var(--gold)">Generando…</div></div></div>
+          <div class="mstep"><div class="mstep-ico s-pend" style="width:18px;height:18px;font-size:.5rem">4</div><div><div class="mstep-n">Videollamada gestor</div><div class="mstep-d">Mañana · 10:00 h</div></div></div>
+          <div class="mstep"><div class="mstep-ico s-pend" style="width:18px;height:18px;font-size:.5rem">5</div><div><div class="mstep-n">Acceso completo</div><div class="mstep-d">Día 5</div></div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Onboarding en 5 días</div><div class="mini-cap-desc">Alta gratuita, videollamada de bienvenida y acceso guiado paso a paso</div></div>
+    </div>
+
+    <!-- 14. Impacto ambiental -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.44s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Sostenibilidad</div>
+          <div class="mc"><div class="ml">Impacto 2026 · En curso</div><div class="mv" style="font-size:.85rem;color:var(--green)">Certificado ✓</div></div>
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.42rem .45rem;flex-shrink:0">
+            <div class="meco-row"><div class="meco-lbl">Papel ahorrado</div><div class="meco-val">92%</div></div>
+            <div class="mbar" style="margin:.18rem 0"><div class="mbar-fill" style="width:92%;background:var(--green)"></div></div>
+            <div class="meco-row" style="margin-top:.3rem"><div class="meco-lbl">CO₂ reducido</div><div class="meco-val">-34 kg</div></div>
+            <div class="mbar" style="margin:.18rem 0"><div class="mbar-fill" style="width:68%;background:rgba(107,207,143,.6)"></div></div>
+            <div class="meco-row" style="margin-top:.3rem"><div class="meco-lbl">Docs digitales</div><div class="meco-val">1.847</div></div>
+            <div class="mbar" style="margin:.18rem 0"><div class="mbar-fill" style="width:85%;background:rgba(107,207,143,.4)"></div></div>
+          </div>
+          <div class="malert"><div class="mdot" style="background:var(--green)"></div><div class="malert-text">Informe anual de impacto disponible para descarga 🌿</div></div>
+          <div class="malert"><div class="mdot" style="background:var(--blue)"></div><div class="malert-text">Alianza activa con ONG ambiental Madrid</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Impacto ambiental</div><div class="mini-cap-desc">Panel de CO₂, papel ahorrado e informe anual de sostenibilidad</div></div>
+    </div>
+
+    <!-- 15. Programa de referidos -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.47s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Referidos</div>
+          <div class="mg2">
+            <div class="mc"><div class="ml">Referidos</div><div class="mv">7</div><div class="ms2 pos">+2 este mes</div></div>
+            <div class="mc"><div class="ml">Ganado</div><div class="mv" style="color:var(--green)">70€</div><div class="ms2">descuento acum.</div></div>
+          </div>
+          <div class="mrow"><div class="mava" style="background:rgba(107,207,143,.12);border-color:rgba(107,207,143,.3);color:var(--green)">JM</div><div><div class="mrname">Juan Martínez</div><div class="mrmeta">Cliente activo · Plan Estándar</div></div><div style="font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--green)">+10€</div></div>
+          <div class="mrow"><div class="mava" style="background:rgba(107,207,143,.12);border-color:rgba(107,207,143,.3);color:var(--green)">SL</div><div><div class="mrname">Sara López</div><div class="mrmeta">Cliente activo · Plan Básico</div></div><div style="font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--green)">+10€</div></div>
+          <div class="mrow"><div class="mava" style="background:var(--gold-dim);border-color:rgba(201,168,76,.3);color:var(--gold)">RP</div><div><div class="mrname">Raúl Pérez</div><div class="mrmeta">Invitado · Pendiente</div></div><div class="mrbadge st-pend">Pend.</div></div>
+          <div class="malert"><div class="mdot" style="background:var(--gold)"></div><div class="malert-text">¡Comparte tu enlace y gana 10€ por cada amigo!</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Programa de referidos</div><div class="mini-cap-desc">Gana descuentos invitando a amigos y llevando el control desde la app</div></div>
+    </div>
+
+    <!-- 16. Gamificación -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.5s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Logros</div>
+          <div class="mc"><div class="ml">Tu nivel PYM</div><div class="mv" style="font-size:.85rem">⭐ Emprendedor Pro</div><div class="ms2">2.340 puntos acumulados</div></div>
+          <div class="mgami"><div class="mgami-icon">🏆</div><div><div class="mgami-name">Sin errores fiscales · 3 meses</div><div style="font-size:.4rem;color:var(--muted)">Desbloqueado</div></div><div class="mgami-pts">+500</div></div>
+          <div class="mgami"><div class="mgami-icon">🌿</div><div><div class="mgami-name">Paper-free · 90% alcanzado</div><div style="font-size:.4rem;color:var(--muted)">Desbloqueado</div></div><div class="mgami-pts">+300</div></div>
+          <div class="mgami"><div class="mgami-icon">⚡</div><div><div class="mgami-name">Onboarding en 4 días</div><div style="font-size:.4rem;color:var(--muted)">Desbloqueado</div></div><div class="mgami-pts">+200</div></div>
+          <div class="mgami" style="opacity:.5"><div class="mgami-icon">💎</div><div><div class="mgami-name">Sin bajas de empleados · 1 año</div><div style="font-size:.4rem;color:var(--muted)">En progreso…</div></div><div class="mgami-pts">+500</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Gamificación</div><div class="mini-cap-desc">Logros, puntos y recompensas por mantener el negocio al día</div></div>
+    </div>
+
+    <!-- 17. Alertas normativas -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.53s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Cambios Legales</div>
+          <div class="mc"><div class="ml">Monitorización activa</div><div class="mv" style="font-size:.85rem;color:var(--green)">Sistema activo</div><div class="ms2">BOE · SS · Hacienda</div></div>
+          <div class="mnorm"><div class="mnorm-dot" style="background:var(--red)"></div><div><div class="mnorm-title">Nuevo tipo SMI 2026 — afecta tus nóminas</div><div class="mnorm-date">Publicado 2 jun · Aplica ya</div></div></div>
+          <div class="mnorm"><div class="mnorm-dot" style="background:var(--gold)"></div><div><div class="mnorm-title">Cambio en modelo 303 — nuevo campo OSS</div><div class="mnorm-date">Publicado 28 may · Aplica T2</div></div></div>
+          <div class="mnorm"><div class="mnorm-dot" style="background:var(--blue)"></div><div><div class="mnorm-title">Actualización RGPD · nuevas obligaciones IA</div><div class="mnorm-date">Publicado 15 may · Revisar</div></div></div>
+          <div class="malert"><div class="mdot" style="background:var(--gold)"></div><div class="malert-text">Tu gestor ya ha revisado los cambios que te afectan</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Alertas normativas</div><div class="mini-cap-desc">Notificaciones automáticas cuando cambia la ley fiscal, laboral o el RGPD</div></div>
+    </div>
+
+    <!-- 18. Omnicanal -->
+    <div class="mini-phone-wrap reveal" style="transition-delay:.56s">
+      <div class="mini-phone">
+        <div class="mini-notch"></div>
+        <div class="mini-screen">
+          <div class="ms-title">Canales</div>
+          <div class="mc"><div class="ml">Tu gestor asignado</div><div class="mv" style="font-size:.85rem;color:var(--green)">Disponible</div><div class="ms2">Tiempo medio respuesta: 2h</div></div>
+          <div class="momni"><div class="momni-icon">💬</div><div><div class="momni-name">Chat IA en app</div><div class="momni-meta">Disponible 24/7</div></div><div class="momni-s st-ok">Activo</div></div>
+          <div class="momni"><div class="momni-icon">📱</div><div><div class="momni-name">WhatsApp</div><div class="momni-meta">Con gestor directo</div></div><div class="momni-s st-ok">Activo</div></div>
+          <div class="momni"><div class="momni-icon">📧</div><div><div class="momni-name">Email</div><div class="momni-meta">Respuesta &lt; 4h laborables</div></div><div class="momni-s st-ok">Activo</div></div>
+          <div class="momni"><div class="momni-icon">🎥</div><div><div class="momni-name">Videollamada</div><div class="momni-meta">Próxima: mañana 10:00 h</div></div><div class="momni-s st-pend">Mañana</div></div>
+          <div class="momni"><div class="momni-icon">🌐</div><div><div class="momni-name">Portal web</div><div class="momni-meta">Acceso completo</div></div><div class="momni-s st-ok">Activo</div></div>
+        </div>
+      </div>
+      <div class="mini-caption"><div class="mini-cap-name">Integración omnicanal</div><div class="mini-cap-desc">App, WhatsApp, email, videollamada y web. El cliente elige cómo contactar</div></div>
+    </div>
+
   </div>
 </section>
 
 <div class="gold-line"></div>
 
-<!-- ══════════════ PLANS ══════════════ -->
+<!-- ══ PLANS ══ -->
 <section class="sec" style="background:var(--deep)">
   <div class="sec-label reveal">Precios transparentes</div>
   <h2 class="sec-title reveal" style="transition-delay:.1s;margin-bottom:2.5rem">Un plan para cada <em>etapa del negocio.</em></h2>
   <div class="plans-grid">
     <div class="plan-card reveal" style="transition-delay:.1s">
-      <div class="plan-name">Básico</div>
-      <div class="plan-sub">Startup · Para empezar</div>
+      <div class="plan-name">Básico</div><div class="plan-sub">Startup · Para empezar</div>
       <div><span class="price-amt">39,99€</span><span class="price-per">/mes</span></div>
       <div class="plan-div"></div>
       <ul class="plan-feats">
@@ -592,32 +788,31 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <li class="plan-feat">1 usuario · hasta 50 facturas/mes</li>
         <li class="plan-feat">Alta de autónomo gratuita</li>
         <li class="plan-feat">Chat IA 24/7</li>
+        <li class="plan-feat">Calendario fiscal personalizado</li>
       </ul>
     </div>
     <div class="plan-card featured reveal" style="transition-delay:.2s">
-      <div class="plan-name">Estándar</div>
-      <div class="plan-sub">Pyme emergente</div>
+      <div class="plan-name">Estándar</div><div class="plan-sub">Pyme emergente</div>
       <div><span class="price-amt">79,99€</span><span class="price-per">/mes</span></div>
       <div class="plan-div"></div>
       <ul class="plan-feats">
-        <li class="plan-feat">IA predictiva completa</li>
-        <li class="plan-feat">Soporte 24/7 · Gestor dedicado</li>
-        <li class="plan-feat">Hasta 5 empleados · SS y nóminas</li>
-        <li class="plan-feat">Hasta 300 facturas/mes</li>
-        <li class="plan-feat">E-commerce básico</li>
+        <li class="plan-feat">IA predictiva + análisis financiero</li>
+        <li class="plan-feat">Gestor colegiado dedicado</li>
+        <li class="plan-feat">SS, nóminas y registro horario</li>
+        <li class="plan-feat">Hasta 5 empleados · 300 facturas/mes</li>
+        <li class="plan-feat">E-commerce básico + firma digital</li>
         <li class="plan-feat">Alta de autónomo gratuita</li>
       </ul>
     </div>
     <div class="plan-card reveal" style="transition-delay:.3s">
-      <div class="plan-name">Premium</div>
-      <div class="plan-sub">Consolidada</div>
+      <div class="plan-name">Premium</div><div class="plan-sub">Consolidada</div>
       <div><span class="price-amt">129,99€</span><span class="price-per">/mes</span></div>
       <div class="plan-div"></div>
       <ul class="plan-feats">
         <li class="plan-feat">Gestor colegiado dedicado fijo</li>
-        <li class="plan-feat">Reportes avanzados y proyecciones</li>
         <li class="plan-feat">Uso ilimitado · 10.000 facturas/mes</li>
-        <li class="plan-feat">Amazon + Shopify integrado</li>
+        <li class="plan-feat">Amazon + Shopify + OSS integrado</li>
+        <li class="plan-feat">Reportes avanzados exportables</li>
         <li class="plan-feat">Certificación de sostenibilidad</li>
         <li class="plan-feat">Informe anual de impacto ambiental</li>
       </ul>
@@ -627,54 +822,38 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 <div class="gold-line"></div>
 
-<!-- ══════════════ FOUNDERS ══════════════ -->
+<!-- ══ FOUNDERS ══ -->
 <section class="sec">
   <div class="sec-label reveal">El equipo</div>
   <h2 class="sec-title reveal" style="transition-delay:.1s">Las personas detrás <em>de PYM.</em></h2>
   <div class="founders-grid">
-
     <div class="founder-card reveal" style="transition-delay:.1s">
       <div class="founder-avatar">JB</div>
       <div class="founder-name">Jaime Barbero Martínez</div>
       <div class="founder-role">Director · Estrategia de Negocio</div>
       <p class="founder-desc">Responsable del posicionamiento competitivo, la toma de decisiones estratégicas y la dirección general del proyecto. Gestiona la estructura financiera y los objetivos SMART del negocio.</p>
-      <div class="founder-tags">
-        <span class="founder-tag">Dirección</span>
-        <span class="founder-tag">Estrategia</span>
-        <span class="founder-tag">Finanzas</span>
-      </div>
+      <div class="founder-tags"><span class="founder-tag">Dirección</span><span class="founder-tag">Estrategia</span><span class="founder-tag">Finanzas</span></div>
     </div>
-
     <div class="founder-card reveal" style="transition-delay:.2s">
       <div class="founder-avatar">AP</div>
       <div class="founder-name">Aarón Paz Rueda</div>
       <div class="founder-role">Marketing · Captación y Atención al Cliente</div>
-      <p class="founder-desc">Responsable de las campañas SEM/SEO, email marketing, eventos de lanzamiento, plan de medios y atención posventa. Lidera el seguimiento de NPS y retención de clientes.</p>
-      <div class="founder-tags">
-        <span class="founder-tag">Marketing Digital</span>
-        <span class="founder-tag">SEM / SEO</span>
-        <span class="founder-tag">Atención al cliente</span>
-      </div>
+      <p class="founder-desc">Responsable de las campañas SEM/SEO, email marketing, eventos de lanzamiento, plan de medios y atención posventa. Lidera el seguimiento del NPS y la retención de clientes.</p>
+      <div class="founder-tags"><span class="founder-tag">Marketing Digital</span><span class="founder-tag">SEM / SEO</span><span class="founder-tag">Atención cliente</span></div>
     </div>
-
     <div class="founder-card reveal" style="transition-delay:.3s">
       <div class="founder-avatar">DJ</div>
       <div class="founder-name">Dylan Jaramillo Soto</div>
       <div class="founder-role">Desarrollo Tecnológico e IA</div>
       <p class="founder-desc">Responsable del desarrollo y mejora continua de la aplicación móvil, la integración de IA con arquitectura RAG, la infraestructura cloud y la ciberseguridad del sistema.</p>
-      <div class="founder-tags">
-        <span class="founder-tag">IA · RAG</span>
-        <span class="founder-tag">App móvil</span>
-        <span class="founder-tag">Cloud · AWS</span>
-      </div>
+      <div class="founder-tags"><span class="founder-tag">IA · RAG</span><span class="founder-tag">App móvil</span><span class="founder-tag">Cloud · AWS</span></div>
     </div>
-
   </div>
 </section>
 
 <div class="gold-line"></div>
 
-<!-- ══════════════ FOOTER ══════════════ -->
+<!-- ══ FOOTER ══ -->
 <footer class="footer">
   <div>
     <div class="footer-brand">P<span>Y</span>M</div>
@@ -688,8 +867,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </footer>
 
 <script>
-// ── screen switcher ──
-const screens = ['dashboard','chat','empleados','proveedores','onboarding'];
+const heroScreens = ['dashboard','chat','empleados','proveedores','onboarding'];
 let cur = 0, timer;
 
 function sw(name, tabBtn, fromNav) {
@@ -702,15 +880,14 @@ function sw(name, tabBtn, fromNav) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const navEl = document.getElementById('nav-' + name);
   if (navEl) navEl.classList.add('active');
-  cur = screens.indexOf(name);
-  // reset auto-rotate
+  cur = heroScreens.indexOf(name);
   clearInterval(timer);
   timer = setInterval(autoRotate, 4200);
 }
 
 function autoRotate() {
-  cur = (cur + 1) % screens.length;
-  const name = screens[cur];
+  cur = (cur + 1) % heroScreens.length;
+  const name = heroScreens[cur];
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + name).classList.add('active');
   document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === cur));
@@ -718,27 +895,24 @@ function autoRotate() {
   const navEl = document.getElementById('nav-' + name);
   if (navEl) navEl.classList.add('active');
 }
-
 timer = setInterval(autoRotate, 4200);
 
-// ── scroll reveal ──
+// scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// ── stat counters ──
-function animNum(el, target, suffix, decimals) {
+// stat counters
+function animNum(el, target, suffix, dec) {
   let v = 0;
-  const dur = 1800, step = 16, inc = target / (dur / step);
   const t = setInterval(() => {
-    v += inc;
+    v += target / (1800 / 16);
     if (v >= target) { v = target; clearInterval(t); }
-    el.textContent = (decimals ? v.toFixed(1) : Math.floor(v)) + suffix;
-  }, step);
+    el.textContent = (dec ? v.toFixed(1) : Math.floor(v)) + suffix;
+  }, 16);
 }
-
-const statObs = new IntersectionObserver(entries => {
+const sObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting && !e.target.dataset.done) {
       e.target.dataset.done = 1;
@@ -751,7 +925,7 @@ const statObs = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.4 });
-document.querySelectorAll('.stat-item').forEach(el => statObs.observe(el));
+document.querySelectorAll('.stat-item').forEach(el => sObs.observe(el));
 </script>
 </body>
 </html>
