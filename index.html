@@ -20,6 +20,33 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold);}
 
+/* ══ PASSWORD GATE ══ */
+#gate{position:fixed;inset:0;background:var(--black);z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;}
+#gate.hidden{pointer-events:none;opacity:0;transition:opacity .6s ease;}
+.gate-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;}
+.gate-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.gate-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:2rem;width:100%;max-width:400px;padding:0 2rem;}
+.gate-logo{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:var(--white);letter-spacing:.12em;line-height:1;opacity:0;animation:fadeUp .9s .1s ease forwards;}
+.gate-logo span{color:var(--gold);}
+.gate-tagline{font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeUp .9s .3s ease forwards;}
+.gate-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;animation:fadeIn .9s .45s ease forwards;}
+.gate-label{font-size:.8rem;color:var(--muted);letter-spacing:.08em;text-align:center;opacity:0;animation:fadeUp .9s .55s ease forwards;}
+.gate-input-wrap{width:100%;position:relative;opacity:0;animation:fadeUp .9s .7s ease forwards;}
+.gate-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem 3.2rem 1rem 1.4rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:300;color:var(--white);letter-spacing:.15em;outline:none;transition:border-color .3s,box-shadow .3s;text-align:center;}
+.gate-input::placeholder{color:var(--muted);letter-spacing:.08em;}
+.gate-input:focus{border-color:rgba(201,168,76,.5);box-shadow:0 0 0 3px rgba(201,168,76,.08);}
+.gate-eye{position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:1rem;padding:0;transition:color .2s;}
+.gate-eye:hover{color:var(--gold);}
+.gate-btn{width:100%;background:var(--gold-dim);border:1px solid rgba(201,168,76,.35);border-radius:14px;padding:1rem;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--gold);letter-spacing:.08em;cursor:pointer;transition:all .3s;opacity:0;animation:fadeUp .9s .85s ease forwards;}
+.gate-btn:hover{background:rgba(201,168,76,.22);border-color:var(--gold);box-shadow:0 0 20px rgba(201,168,76,.15);}
+.gate-error{font-size:.78rem;color:var(--red);letter-spacing:.04em;text-align:center;height:1rem;transition:opacity .3s;opacity:0;}
+.gate-error.show{opacity:1;}
+.gate-hint{font-size:.7rem;color:var(--border);letter-spacing:.04em;text-align:center;opacity:0;animation:fadeIn 1s 1.2s ease forwards;margin-top:-.5rem;}
+.gate-hint span{color:rgba(201,168,76,.3);}
+/* shake */
+@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-8px);}40%{transform:translateX(8px);}60%{transform:translateX(-6px);}80%{transform:translateX(6px);}}
+.gate-input.shake{animation:shake .4s ease;}
+
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 7vw;gap:5rem;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-15%;right:-8%;width:55vw;height:55vw;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.055) 0%,transparent 70%);pointer-events:none;}
@@ -282,6 +309,37 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .plan-feat{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:var(--text);line-height:1.45;}
 .plan-feat::before{content:'—';color:var(--gold);font-size:.72rem;flex-shrink:0;margin-top:.1rem;}
 
+/* ── ROLES SECTION ── */
+.roles-intro{font-size:1.05rem;line-height:1.75;color:var(--muted);max-width:580px;margin-bottom:3.5rem;}
+.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.role-col{display:flex;flex-direction:column;gap:1.5rem;}
+.role-header{display:flex;align-items:center;gap:1rem;margin-bottom:.25rem;}
+.role-badge{padding:.45rem 1.1rem;border-radius:100px;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;}
+.badge-admin{background:var(--gold-dim);border:1px solid rgba(201,168,76,.35);color:var(--gold);}
+.badge-emp{background:rgba(122,180,224,.12);border:1px solid rgba(122,180,224,.3);color:var(--blue);}
+.role-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--white);}
+.role-desc{font-size:.88rem;line-height:1.7;color:var(--muted);}
+.role-phone-wrap{display:flex;justify-content:center;}
+.role-phone{width:200px;height:410px;background:var(--deep);border-radius:30px;border:1.5px solid var(--border);box-shadow:0 0 0 4px var(--card),0 0 0 5px var(--border),0 30px 80px rgba(0,0,0,.7);overflow:hidden;position:relative;}
+.role-phone.admin-glow{box-shadow:0 0 0 4px var(--card),0 0 0 5px rgba(201,168,76,.4),0 30px 80px rgba(0,0,0,.7),0 0 40px rgba(201,168,76,.1);}
+.role-phone.emp-glow{box-shadow:0 0 0 4px var(--card),0 0 0 5px rgba(122,180,224,.35),0 30px 80px rgba(0,0,0,.7),0 0 40px rgba(122,180,224,.08);}
+.role-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:70px;height:18px;background:var(--black);border-radius:0 0 12px 12px;z-index:5;}
+.role-screen{width:100%;height:100%;padding:26px 13px 50px;display:flex;flex-direction:column;gap:.35rem;overflow:hidden;}
+.role-nav{position:absolute;bottom:0;left:0;right:0;height:46px;background:rgba(17,17,17,.97);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding:0 4px 6px;backdrop-filter:blur(8px);}
+.rni{display:flex;flex-direction:column;align-items:center;gap:1px;}
+.rni-icon{font-size:.75rem;line-height:1;}
+.rni-lbl{font-size:.36rem;color:var(--muted);}
+.rni.on .rni-icon,.rni.on .rni-lbl{color:var(--gold);}
+.rni.on-blue .rni-icon,.rni.on-blue .rni-lbl{color:var(--blue);}
+.role-perms{display:flex;flex-direction:column;gap:.65rem;margin-top:.5rem;}
+.perm-item{display:flex;align-items:center;gap:.75rem;font-size:.88rem;color:var(--text);}
+.perm-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.perm-ok{background:rgba(107,207,143,.12);border:1px solid rgba(107,207,143,.25);}
+.perm-no{background:rgba(224,120,120,.1);border:1px solid rgba(224,120,120,.2);opacity:.45;}
+.perm-label{flex:1;}
+.perm-check.ok{color:var(--green);}
+.perm-check.no{color:var(--red);}
+
 /* ── FOUNDERS ── */
 .founders-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
 .founder-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.2rem 2rem;position:relative;transition:transform .3s,box-shadow .3s;overflow:hidden;}
@@ -313,6 +371,25 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </style>
 </head>
 <body>
+
+<!-- ══ PASSWORD GATE ══ -->
+<div id="gate">
+  <div class="gate-noise"></div>
+  <div class="gate-glow"></div>
+  <div class="gate-inner">
+    <div class="gate-logo">P<span>Y</span>M</div>
+    <div class="gate-tagline">El pilar de su crecimiento</div>
+    <div class="gate-line"></div>
+    <div class="gate-label">Acceso restringido — introduce la clave para continuar</div>
+    <div class="gate-input-wrap">
+      <input class="gate-input" id="gateInput" type="password" placeholder="••••••••" autocomplete="off" onkeydown="if(event.key==='Enter')checkGate()">
+      <button class="gate-eye" id="gateEye" onclick="toggleGateEye()" title="Mostrar contraseña">👁</button>
+    </div>
+    <div class="gate-error" id="gateError">Clave incorrecta. Inténtalo de nuevo.</div>
+    <button class="gate-btn" onclick="checkGate()">Acceder</button>
+    <div class="gate-hint">Pista: el nombre del proyecto en minúsculas · <span>pym2026</span></div>
+  </div>
+</div>
 
 <!-- ══ HERO ══ -->
 <section class="hero">
@@ -822,6 +899,152 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 <div class="gold-line"></div>
 
+<div class="gold-line"></div>
+
+<!-- ══ ROLES ══ -->
+<section class="sec" style="background:var(--deep)">
+  <div class="sec-label reveal">Perfiles de acceso</div>
+  <h2 class="sec-title reveal" style="transition-delay:.1s">Una app, <em>dos experiencias distintas.</em></h2>
+  <p class="roles-intro reveal" style="transition-delay:.15s">Dependiendo del rol con el que inicias sesión, PYM te muestra solo lo que necesitas. El administrador tiene control total del negocio; el empleado accede únicamente a su espacio de trabajo.</p>
+
+  <div class="roles-grid">
+
+    <!-- ADMINISTRADOR -->
+    <div class="role-col reveal" style="transition-delay:.2s">
+      <div>
+        <div class="role-header">
+          <div class="role-badge badge-admin">⬡ Administrador</div>
+        </div>
+        <div class="role-title">Vista completa del negocio</div>
+        <p class="role-desc">El administrador — típicamente el autónomo, fundador o gestor — accede a todas las funciones: finanzas, empleados, proveedores, fiscal, reportes y configuración. Tiene además acceso directo al gestor colegiado y puede validar documentos antes de enviarlos a Hacienda.</p>
+      </div>
+
+      <div class="role-phone-wrap">
+        <div class="role-phone admin-glow">
+          <div class="role-notch"></div>
+          <div class="role-screen">
+            <!-- header -->
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-shrink:0;margin-bottom:.2rem">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--white)">PYM <span style="font-size:.6rem;color:var(--gold);letter-spacing:.06em">ADMIN</span></div>
+              <div style="font-size:.5rem;color:var(--muted)">Marta González</div>
+            </div>
+            <!-- metrics -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;flex-shrink:0">
+              <div class="mc"><div class="ml">Ingresos mes</div><div class="mv">8.240€</div><div class="ms2 pos">↑ 14%</div></div>
+              <div class="mc"><div class="ml">Empleados</div><div class="mv">3</div><div class="ms2">1 en baja</div></div>
+            </div>
+            <!-- alerts -->
+            <div class="malert"><div class="mdot" style="background:var(--red)"></div><div class="malert-text">Modelo 303 vence en <strong>3 días</strong> — revisar borrador</div></div>
+            <div class="malert"><div class="mdot" style="background:var(--gold)"></div><div class="malert-text">Nóminas mayo pendientes de aprobación</div></div>
+            <!-- quick actions -->
+            <div style="font-size:.48rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;flex-shrink:0;margin-top:.15rem">Acciones rápidas</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;flex-shrink:0">
+              <div class="mbtn gold" style="font-size:.5rem;padding:.32rem .4rem">📊 Ver reportes</div>
+              <div class="mbtn gold" style="font-size:.5rem;padding:.32rem .4rem">👥 Empleados</div>
+              <div class="mbtn gold" style="font-size:.5rem;padding:.32rem .4rem">🧾 Proveedores</div>
+              <div class="mbtn gold" style="font-size:.5rem;padding:.32rem .4rem">⚙️ Configuración</div>
+            </div>
+            <!-- mini chart -->
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.38rem .42rem;flex-shrink:0">
+              <div class="ml">Facturación · 6 meses</div>
+              <div class="mbars-wrap" style="margin-top:.3rem"><div class="mbb" style="height:40%;background:rgba(201,168,76,.3)"></div><div class="mbb" style="height:52%;background:rgba(201,168,76,.3)"></div><div class="mbb" style="height:44%;background:rgba(201,168,76,.3)"></div><div class="mbb" style="height:68%;background:rgba(201,168,76,.4)"></div><div class="mbb" style="height:80%;background:rgba(201,168,76,.5)"></div><div class="mbb" style="height:95%;background:var(--gold)"></div></div>
+            </div>
+          </div>
+          <div class="role-nav">
+            <div class="rni on"><div class="rni-icon">⬡</div><div class="rni-lbl">Inicio</div></div>
+            <div class="rni"><div class="rni-icon">◎</div><div class="rni-lbl">Chat IA</div></div>
+            <div class="rni"><div class="rni-icon">◈</div><div class="rni-lbl">SS</div></div>
+            <div class="rni"><div class="rni-icon">📊</div><div class="rni-lbl">Reportes</div></div>
+            <div class="rni"><div class="rni-icon">⚙️</div><div class="rni-lbl">Config</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role-perms">
+        <div class="perm-item"><div class="perm-icon perm-ok">📊</div><span class="perm-label">Dashboard financiero completo</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">🧾</div><span class="perm-label">Gestión fiscal y modelos</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">👥</div><span class="perm-label">Gestión de empleados y SS</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">🏭</div><span class="perm-label">Gestión de proveedores</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">📈</div><span class="perm-label">Reportes y análisis predictivo</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">✍️</div><span class="perm-label">Firma y validación de documentos</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">⚙️</div><span class="perm-label">Configuración y facturación</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">🤝</div><span class="perm-label">Contacto directo con el gestor</span><span class="perm-check ok">✓</span></div>
+      </div>
+    </div>
+
+    <!-- EMPLEADO -->
+    <div class="role-col reveal" style="transition-delay:.3s">
+      <div>
+        <div class="role-header">
+          <div class="role-badge badge-emp">◎ Empleado</div>
+        </div>
+        <div class="role-title">Tu espacio de trabajo</div>
+        <p class="role-desc">El empleado accede únicamente a su perfil laboral: nóminas, horario, vacaciones, documentos propios y comunicación con RR.HH. No ve datos financieros del negocio, ni información de otros empleados, ni puede modificar configuración alguna.</p>
+      </div>
+
+      <div class="role-phone-wrap">
+        <div class="role-phone emp-glow">
+          <div class="role-notch"></div>
+          <div class="role-screen">
+            <!-- header -->
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-shrink:0;margin-bottom:.2rem">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--white)">PYM <span style="font-size:.6rem;color:var(--blue);letter-spacing:.06em">EMPLEADO</span></div>
+              <div style="font-size:.5rem;color:var(--muted)">Laura Ruiz</div>
+            </div>
+            <!-- metrics employee -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;flex-shrink:0">
+              <div class="mc" style="border-top-color:var(--blue)"><div class="ml">Horas esta sem.</div><div class="mv" style="color:var(--blue)">38h</div><div class="ms2">de 40h</div></div>
+              <div class="mc" style="border-top-color:var(--blue)"><div class="ml">Vacaciones</div><div class="mv" style="color:var(--blue)">12</div><div class="ms2">días restantes</div></div>
+            </div>
+            <!-- nomina -->
+            <div class="malert" style="border-color:rgba(122,180,224,.2)"><div class="mdot" style="background:var(--green)"></div><div class="malert-text">Nómina mayo 2026 disponible · 1.480€ netos</div></div>
+            <!-- docs -->
+            <div class="mrow" style="border-color:rgba(122,180,224,.15)">
+              <div style="width:20px;height:20px;border-radius:5px;background:rgba(122,180,224,.12);display:flex;align-items:center;justify-content:center;font-size:.6rem;flex-shrink:0">📄</div>
+              <div><div class="mrname">Contrato indefinido</div><div class="mrmeta">Firmado · jun 2026</div></div>
+              <div class="mrbadge" style="background:rgba(122,180,224,.1);color:var(--blue);border:1px solid rgba(122,180,224,.25)">Ver</div>
+            </div>
+            <div class="mrow" style="border-color:rgba(122,180,224,.15)">
+              <div style="width:20px;height:20px;border-radius:5px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;font-size:.6rem;flex-shrink:0">⏱</div>
+              <div><div class="mrname">Registro horario</div><div class="mrmeta">Hoy · Entrada 09:02 h</div></div>
+              <div class="mrbadge st-ok">Activo</div>
+            </div>
+            <!-- solicitud -->
+            <div style="font-size:.48rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;flex-shrink:0;margin-top:.1rem">Solicitudes</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;flex-shrink:0">
+              <div class="mbtn" style="font-size:.5rem;padding:.32rem .4rem;border-color:rgba(122,180,224,.2);color:var(--blue)">🏖 Vacaciones</div>
+              <div class="mbtn" style="font-size:.5rem;padding:.32rem .4rem;border-color:rgba(122,180,224,.2);color:var(--blue)">📋 Nóminas</div>
+            </div>
+            <!-- locked -->
+            <div style="background:rgba(224,120,120,.05);border:1px solid rgba(224,120,120,.12);border-radius:8px;padding:.38rem .42rem;flex-shrink:0;display:flex;align-items:center;gap:.4rem">
+              <span style="font-size:.75rem">🔒</span>
+              <div style="font-size:.5rem;color:rgba(224,120,120,.6)">Dashboard financiero — sin acceso</div>
+            </div>
+          </div>
+          <div class="role-nav">
+            <div class="rni on-blue"><div class="rni-icon">⬡</div><div class="rni-lbl">Inicio</div></div>
+            <div class="rni"><div class="rni-icon">⏱</div><div class="rni-lbl">Horario</div></div>
+            <div class="rni"><div class="rni-icon">📄</div><div class="rni-lbl">Mis docs</div></div>
+            <div class="rni"><div class="rni-icon">💬</div><div class="rni-lbl">Chat</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role-perms">
+        <div class="perm-item"><div class="perm-icon perm-ok">📄</div><span class="perm-label">Mis nóminas y contratos</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">⏱</div><span class="perm-label">Registro y consulta de horario</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">🏖</div><span class="perm-label">Solicitud de vacaciones y permisos</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-ok">💬</div><span class="perm-label">Chat con RR.HH. / administrador</span><span class="perm-check ok">✓</span></div>
+        <div class="perm-item"><div class="perm-icon perm-no">📊</div><span class="perm-label" style="opacity:.45">Dashboard financiero</span><span class="perm-check no">✗</span></div>
+        <div class="perm-item"><div class="perm-icon perm-no">👥</div><span class="perm-label" style="opacity:.45">Datos de otros empleados</span><span class="perm-check no">✗</span></div>
+        <div class="perm-item"><div class="perm-icon perm-no">🧾</div><span class="perm-label" style="opacity:.45">Gestión fiscal y modelos</span><span class="perm-check no">✗</span></div>
+        <div class="perm-item"><div class="perm-icon perm-no">⚙️</div><span class="perm-label" style="opacity:.45">Configuración del negocio</span><span class="perm-check no">✗</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ══ FOUNDERS ══ -->
 <section class="sec">
   <div class="sec-label reveal">El equipo</div>
@@ -867,6 +1090,33 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </footer>
 
 <script>
+/* ── GATE ── */
+const PASS = 'pym2026';
+function checkGate() {
+  const val = document.getElementById('gateInput').value;
+  const err = document.getElementById('gateError');
+  if (val === PASS) {
+    const g = document.getElementById('gate');
+    g.classList.add('hidden');
+    setTimeout(() => { g.style.display = 'none'; }, 700);
+    document.body.style.overflow = '';
+  } else {
+    err.classList.add('show');
+    const inp = document.getElementById('gateInput');
+    inp.classList.remove('shake');
+    void inp.offsetWidth;
+    inp.classList.add('shake');
+    inp.value = '';
+    setTimeout(() => err.classList.remove('show'), 2500);
+  }
+}
+function toggleGateEye() {
+  const inp = document.getElementById('gateInput');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+document.body.style.overflow = 'hidden';
+
+/* ── HERO SCREENS ── */
 const heroScreens = ['dashboard','chat','empleados','proveedores','onboarding'];
 let cur = 0, timer;
 
