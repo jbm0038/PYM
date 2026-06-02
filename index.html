@@ -20,32 +20,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold);}
 
-/* ══ PASSWORD GATE ══ */
-#gate{position:fixed;inset:0;background:var(--black);z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;}
-#gate.hidden{pointer-events:none;opacity:0;transition:opacity .6s ease;}
-.gate-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;}
-.gate-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
-.gate-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:2rem;width:100%;max-width:400px;padding:0 2rem;}
-.gate-logo{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:var(--white);letter-spacing:.12em;line-height:1;opacity:0;animation:fadeUp .9s .1s ease forwards;}
-.gate-logo span{color:var(--gold);}
-.gate-tagline{font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeUp .9s .3s ease forwards;}
-.gate-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;animation:fadeIn .9s .45s ease forwards;}
-.gate-label{font-size:.8rem;color:var(--muted);letter-spacing:.08em;text-align:center;opacity:0;animation:fadeUp .9s .55s ease forwards;}
-.gate-input-wrap{width:100%;position:relative;opacity:0;animation:fadeUp .9s .7s ease forwards;}
-.gate-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem 3.2rem 1rem 1.4rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:300;color:var(--white);letter-spacing:.15em;outline:none;transition:border-color .3s,box-shadow .3s;text-align:center;}
-.gate-input::placeholder{color:var(--muted);letter-spacing:.08em;}
-.gate-input:focus{border-color:rgba(201,168,76,.5);box-shadow:0 0 0 3px rgba(201,168,76,.08);}
-.gate-eye{position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:1rem;padding:0;transition:color .2s;}
-.gate-eye:hover{color:var(--gold);}
-.gate-btn{width:100%;background:var(--gold-dim);border:1px solid rgba(201,168,76,.35);border-radius:14px;padding:1rem;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--gold);letter-spacing:.08em;cursor:pointer;transition:all .3s;opacity:0;animation:fadeUp .9s .85s ease forwards;}
-.gate-btn:hover{background:rgba(201,168,76,.22);border-color:var(--gold);box-shadow:0 0 20px rgba(201,168,76,.15);}
-.gate-error{font-size:.78rem;color:var(--red);letter-spacing:.04em;text-align:center;height:1rem;transition:opacity .3s;opacity:0;}
-.gate-error.show{opacity:1;}
-.gate-hint{font-size:.7rem;color:var(--border);letter-spacing:.04em;text-align:center;opacity:0;animation:fadeIn 1s 1.2s ease forwards;margin-top:-.5rem;}
-.gate-hint span{color:rgba(201,168,76,.3);}
+
+
+
+
+
+
+
+
 /* shake */
 @keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-8px);}40%{transform:translateX(8px);}60%{transform:translateX(-6px);}80%{transform:translateX(6px);}}
-.gate-input.shake{animation:shake .4s ease;}
 
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 7vw;gap:5rem;position:relative;overflow:hidden;}
@@ -372,26 +356,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </head>
 <body>
 
-<!-- ══ PASSWORD GATE ══ -->
-<div id="gate">
-  <div class="gate-noise"></div>
-  <div class="gate-glow"></div>
-  <div class="gate-inner">
-    <div class="gate-logo">P<span>Y</span>M</div>
-    <div class="gate-tagline">El pilar de su crecimiento</div>
-    <div class="gate-line"></div>
-    <div class="gate-label">Acceso restringido — introduce la clave para continuar</div>
-    <div class="gate-input-wrap">
-      <input class="gate-input" id="gateInput" type="password" placeholder="••••••••" autocomplete="off" onkeydown="if(event.key==='Enter')checkGate()">
-      <button class="gate-eye" id="gateEye" onclick="toggleGateEye()" title="Mostrar contraseña">👁</button>
-    </div>
-    <div class="gate-error" id="gateError">Clave incorrecta. Inténtalo de nuevo.</div>
-    <button class="gate-btn" onclick="checkGate()">Acceder</button>
-    <div class="gate-hint">Pista: el nombre del proyecto en minúsculas · <span>pym2026</span></div>
-  </div>
-</div>
-
-<!-- ══ HERO ══ -->
 <section class="hero">
   <div>
     <div class="eyebrow">Gestoría digital con IA · Madrid 2026</div>
@@ -1090,30 +1054,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </footer>
 
 <script>
-/* ── GATE ── */
-const PASS = 'pym2026';
-function checkGate() {
-  const val = document.getElementById('gateInput').value;
-  const err = document.getElementById('gateError');
-  if (val === PASS) {
-    const g = document.getElementById('gate');
-    g.classList.add('hidden');
-    setTimeout(() => { g.style.display = 'none'; }, 700);
-    document.body.style.overflow = '';
-  } else {
-    err.classList.add('show');
-    const inp = document.getElementById('gateInput');
-    inp.classList.remove('shake');
-    void inp.offsetWidth;
-    inp.classList.add('shake');
-    inp.value = '';
-    setTimeout(() => err.classList.remove('show'), 2500);
-  }
-}
-function toggleGateEye() {
-  const inp = document.getElementById('gateInput');
-  inp.type = inp.type === 'password' ? 'text' : 'password';
-}
+
 document.body.style.overflow = 'hidden';
 
 /* ── HERO SCREENS ── */
